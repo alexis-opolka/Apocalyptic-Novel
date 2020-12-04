@@ -486,7 +486,7 @@ class Pnj:
             self.SetTaboo()
         if type(len(self.taboos)/2) is int:
             x = random.randint(1, len(self.taboos)/2)
-        else:
+        else: 
             x = random.randint(1, (int(len(self.taboos)/2)+1))
         y = 0; w = 0
         while y < x:
@@ -497,21 +497,15 @@ class Pnj:
                     if not self.taboos[z.contrary][0]:
                         if not self.taboos[z][0]:
                             self.taboos[z][0] = True
-                            y += 1
-                            w = 0
-                        else:
-                            w += 1
-                    else:
-                        w += 1
+                            y += 1; w = 0
+                        else: w += 1
+                    else: w += 1
                 else:
                     if not self.taboos[z][0]:
                         self.taboos[z][0] = True
-                        y += 1
-                        w = 0
-                    else:
-                        w += 1
-            else:
-                break
+                        y += 1; w = 0
+                    else: w += 1
+            else: break
 
     def HasTaboo(self, taboo):
         if self.taboos[taboo][0]:
@@ -537,7 +531,7 @@ class Pnj:
                 self.Encounters(entity)
                 entity.Encounters(self)
         else:
-            print("The room given is not a Room() object")
+            print("The given room is not a Room() object")
 
     def ExitRoom(self):
         self.inroom.people.remove(self)
@@ -620,7 +614,6 @@ class MerchantMan(Pnj):
         print("\nI have:")
         for item in self.inventory.content:
             print(f"- {item}: {self.inventory.content[item]['base-object'].price} $")
-
         choice = input("What do you want to do? ")
         if choice == "buy":
             choice = input("What do you buy? ")

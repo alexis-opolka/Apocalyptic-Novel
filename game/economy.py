@@ -2,6 +2,7 @@ import time
 import random
 from multiprocessing import Process
 import os
+import math
 
 class GlobalMarketPlace:
     """
@@ -10,7 +11,11 @@ class GlobalMarketPlace:
         representating the global price of an item in the World()
     """
     def __init__(self):
-        pass ### Placeholder, TODO: Create the system
+        #pass ### Placeholder, TODO: Create the system
+        need = 50
+        conso = 30
+        self.test = int(50+math.atan(float(need)/float(conso))*100/math.pi)
+        print(self.test)
 
 class EnvironmentMarketPlace:
     """

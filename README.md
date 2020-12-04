@@ -19,7 +19,7 @@ monsters.py: It contains the future Monsters classes.
 player.py: It contains the base of the Player() class, need further research and dev.
 pnjs.py: It contains the Pnj() class which is in active dev.
 pnjs_nesfw_version.py: It contains an old-version of the one in pnjs.py with some NSFW method and aspects.
-          It's about Sex, Kills and other aspects who can hurts the sensibility of persons.
+          It's about Sex, Kills and other aspects who can hurt the sensibility of persons.
 renpy.py: It contains Ren'Py-only methods, used to have some Ren'Py code without having to add the Ren'Py package to the code.
 taboo.py: It contains the system of taboos and the Taboo() class.
 
