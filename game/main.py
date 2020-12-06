@@ -27,6 +27,7 @@ pnj4 = Pnj("4")
 #### MarketPlaces
 Global = eco.GlobalMarketPlace()
 
+
 #en gros pour chaque acteur j'ai une variable qui représente 
 # sa demande (de 0 à 1000 mais ça pourrait aller de +inf à -inf)
 #plus une constante qui dit de combien sa demande augmente par jour
@@ -41,3 +42,4 @@ Global = eco.GlobalMarketPlace()
 # tu retranches la quantité vendue (ou une valeur qui y est proportionnelle) 
 # à son need (la valeur entre 0 et 1000), 
 # et tu t'ajoutes prix x quantité d'argent
+

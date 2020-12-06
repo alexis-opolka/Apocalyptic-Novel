@@ -15,7 +15,6 @@ class GlobalMarketPlace:
         need = 50
         conso = 30
         self.test = int(50+math.atan(float(need)/float(conso))*100/math.pi)
-        print(self.test)
 
 class EnvironmentMarketPlace:
     """
