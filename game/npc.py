@@ -1,17 +1,18 @@
-from lists import *
+from lists import TabooList
 from renpy import Character
+import items as it
 import random
 import inventory
 import environment
 import renpy
 
 """
-    This module contains the entire class for the PNJ, no more no less.
+    This module contains the entire class for the NPC, no more no less.
 """
 
-class Pnj:
+class NPC:
     """
-        This class is only used for PNJs.
+        This class is only used for NPC.
         We alternate the Point of View(POV) for the actions and sometimes have the two pov available for
         actions.
         For having the best reusability in no time, we mainly use the random module.
@@ -21,7 +22,32 @@ class Pnj:
             - lists module
             - inventory module
     """
-    def __init__(self, name="???", color="#f9300c", genre="fem", minage=17, maxage=36, isenslaved=False, profile_image="images/pnj.png", font = "Avara.tff", dialogue_color = "#ffffff"):
+    ### Class global list
+    #### Names
+    male_names_list = ["Georges", "Mathieu", "Michael", "Nicolas", "Yohann"]
+    fem_names_list = ["Millie","Camille", "Jade", "Marine", "Andréa"]
+    #### Body
+    hair_color_list = ["brown", "black", "blond", "ginger"]
+    haircut_list = ["short", "medium", "long"]
+    hair_styles_list =  [""]
+    eyes_color_list = ["grey", "blue", "yellow", "green", "red", "brown"]
+    skin_color_list = ["white", "asian", "black"]
+    facial_pilosity_list = ["little", "average", "big"]
+    breast_size_list = ["little", "average", "big"]
+    ass_size_list = ["little", "average", "big"]
+    status_list = ["normal", "pregnant"]
+    #### City
+    city_list = ["Paris", "Béziers", "London", "Berlin", "New York", "Los Angeles", "San Francisco"]
+    #### Replies
+    reply_list = ("What ?", "I have nothing to say to you!", "What again ?!")
+    #### Booleans
+    bool_list = (True, False)
+    #### Items
+    item_list = [it.dress, it.collar, it.pen, it.bag_eastpak, it.jacket, it.knife, it.ak47]
+
+    
+    def __init__(self, name="???", color="#f9300c", genre="fem", minage=17, maxage=36, isenslaved=False, profile_image="images/pnj.png", font="Avara.tff", dialogue_color="#ffffff"):
+        
         ### Strings Creator-defined
         self.c = Character(name, #The name to be displayed above the dialogue.
             what_font = font, #The font to be used for the character.
@@ -29,69 +55,78 @@ class Pnj:
             color = color, #The colour of the character's NAME section
             what_color = dialogue_color) #The colour of the character's dialogue.
         self.age = random.randint(minage, maxage) # Aged Randomly defined between min and max age given when __init__() called
-        self.name = name # Used to have the name of Object and Pnj
-        self.color = color # Theoric use: Add it in the Character() function for having the pnj have this color
-        self.genre = genre # Used to know the genre of pnj and conjugate phrases to male or female prefix
-        self.profile_image = profile_image # used to show the image when pnj talks
+        self.name = name # Used to have the name of Object and NPC
+        self.color = color # Theoric use: Add it in the Character() function for having the NPC have this color
+        self.genre = genre # Used to know the genre of NPC and conjugate phrases to male or female prefix
+        self.profile_image = profile_image # used to show the image when NPC talks
         if self.genre == "fem":
-            self.genren = "Woman" # Name used to properly define pnj's genre, here it's a female
+            self.genren = "Woman" # Name used to properly define NPC's genre, here it's a female
         elif self.genre == "man":
-            self.genren = "Man" # Name used to properly define pnj's genre, here it's a male
+            self.genren = "Man" # Name used to properly define NPC's genre, here it's a male
         else:
-            self.genren = "Undefined" # Name used to properly define pnj's genre, here it's not given or pnj is non binary
+            self.genren = "Undefined" # Name used to properly define NPC's genre, here it's not given or NPC is non binary
+        self.status = NPC.status_list[0]
+        
         ### Strings Randomly defined
-        self.hair_color = random.choice(HairColorList) # Store the hair color, after used to show layered images
-        self.eyes_color = random.choice(EyesColorList) # Store the eyes color, after used to show layered images
-        self.born_city = random.choice(CityList) # Store the city of born, after used to change value of price when enslaved
+        self.hair_color = random.choice(NPC.hair_color_list) # Store the hair color, after used to show layered images
+        self.eyes_color = random.choice(NPC.eyes_color_list) # Store the eyes color, after used to show layered images
+        self.born_city = random.choice(NPC.city_list) # Store the city of born, after used to change value of price when enslaved
+        
         ### Numbers: int/float | int preferred
-        self.life = 100 # Life of pnj | It's used for doing things who needs life to be sure to be able to come back
-        self.trust = 0 # Trust of pnj to someone | It's used to gain pnj in the team of Player
-        self.suspicion = 0 # Suspicion of pnj to someone | It's used to determine the probability of doing smthng
-        self.love = 0 # Love of pnj to someone
-        self.anger = 0 # Anger of pnj to someone
-        self.fear = 0 # Fear of pnj of someone or a group | Person is preferred
-        self.corr = 0 # Corruption of pnj | Help to do illegal things with him
-        self.loyalty = 0 # Loyalty of pnj to a camp, ideology or person
-        self.inf = 30 # Infuence of pnj
-        self.price = random.randint(150, 10000) # Price of pnj when he's enslaved, if not set manually
-        self.money = 0 # Money the pnj have, currently 0
-        self.will = random.randint(20, 100) # Will of pnj to do an action and the ability to be influenced or not | Can be broken with training if enslaved or can be upgraded with actions
-        self.obedience = 0 # Obedience of pnj | Only used when self.enslaved is True
-        self.shame = 100 # Shame of pnj | only used when self.enslave is True
-        self.karma = 0 # Karma of pnj | Used to determine if can do bad or good things
-        self.happiness = 100 # Happiness of pnj | Used to determine if is in depression or not
+        self.life = 100 # Life of npc | It's used for doing things who needs life to be sure to be able to come back
+        self.trust = 0 # Trust of npc to someone | It's used to gain npc in the team of Player
+        self.suspicion = 0 # Suspicion of npc to someone | It's used to determine the probability of doing smthng
+        self.love = 0 # Love of npc to someone
+        self.anger = 0 # Anger of npc to someone
+        self.fear = 0 # Fear of npc of someone or a group | Person is preferred
+        self.corr = 0 # Corruption of npc | Help to do illegal things with him
+        self.loyalty = 0 # Loyalty of npc to a camp, ideology or person
+        self.inf = 30 # Infuence of npc
+        self.price = random.randint(150, 10000) # Price of npc when he's enslaved, if not set manually
+        self.money = 0 # Money the npc have, currently 0
+        self.will = random.randint(20, 100) # Will of npc to do an action and the ability to be influenced or not | Can be broken with training if enslaved or can be upgraded with actions
+        self.obedience = 0 # Obedience of npc | Only used when self.enslaved is True
+        self.shame = 100 # Shame of npc | only used when self.enslave is True
+        self.karma = 0 # Karma of npc | Used to determine if can do bad or good things
+        self.happiness = 100 # Happiness of npc | Used to determine if is in depression or not
+
         ### Booleans
         if isenslaved == True:
-            self.enslaved = True # pnj is a slave | Only used to know enslavement
-            self.free = False # pnj is not free | Used to know certain amount of things: slavery, faction, prisoner, etc...
+            self.enslaved = True # npc is a slave | Only used to know enslavement
+            self.free = False # npc is not free | Used to know certain amount of things: slavery, faction, prisoner, etc...
         elif isenslaved == False:
-            self.enslaved = False # pnj isn't a slave | Only used to know enslavement
-            self.free = True # pnj is free | Used to know certain amount of things: slavery, faction, prisoner, etc...
-        self.dead = False # pnj is dead
-        self.suicided = False # pnj suicided
-        self.killed = False # pnj has been killed
-        self.kidnapped = False # pnj has been kidnapped
-        self.had_sex_with = False # if False pnj is a virgin otherwise he's not and the value is True
+            self.enslaved = False # npc isn't a slave | Only used to know enslavement
+            self.free = True # npc is free | Used to know certain amount of things: slavery, faction, prisoner, etc...
+        self.dead = False # npc is dead
+        self.suicided = False # npc suicided
+        self.killed = False # npc has been killed
+        self.kidnapped = False # npc has been kidnapped
+        self.had_sex_with = False # if False npc is a virgin otherwise he's not and the value is True
+
         ### None defined properties
-        self.owner = None # Used to store object reference of Owner | Only used when pnj is enslaved, self.enslaved == True
+        self.owner = None # Used to store object reference of Owner | Only used when npc is enslaved, self.enslaved == True
         self.inroom = None # Used to store object reference of the Room
-        self.interacts = None # Used to store object of the current PNJ/Player the pnj is interacting with
+        self.interacts = None # Used to store object of the current npc/Player the npc is interacting with
+
         ### Lists
-        self.knows = [] # PNJ/Player is added when pnj hears of him/her
-        self.encounters = [] # PNJ/Player is added when pnj speaks to them for the first time
-        self.had_relationship = [] # Every relationships of pnj
-        self.can_interact = [] # List of PNJ/Player with whom the pnj can interact, it's cleared when we quit the room | Used to dynamically interact with the PNJs of the Room
-        self.slaves = [] # Every slaves of pnj
+        self.knows = [] # npc/Player is added when npc hears of him/her
+        self.encounters = [] # npc/Player is added when npc speaks to them for the first time
+        self.had_relationship = [] # Every relationships of npc
+        self.can_interact = [] # List of npc/Player with whom the npc can interact, it's cleared when we quit the room | Used to dynamically interact with the npcs of the Room
+        self.slaves = [] # Every slaves of npc
+        self.joined = []
+
         ### Dictionnaries
-        self.inventory = inventory.Inventory() # Inventory of pnj | property is in fact an object of class Inventory()
+        self.inventory = inventory.Inventory() # Inventory of npc | property is in fact an object of class Inventory()
         self.thinks = {} ### Under Development: Dictionnary made to know the attributes given to each aquaintance
-        self.taboos = {} # Here are placed the taboos of pnj as [Taboo-object, [If has, Broken Index,Player knows]]
+        self.taboos = {} # Here are placed the taboos of npc as [Taboo-object, [If has, Broken Index,Player knows]]
         self.records = {} ### TODO: Develop a system to store the differents records of action | used to make statistics
+
         ### We call methods to set some base-properties
         self.SetTaboo()
 
     ######################################################
-    ####    We have an impact on Vars of PNJ's
+    ####    We have an impact on Vars of npc's
     ######################################################
 
     def SetMoney(self, money):
@@ -154,18 +189,11 @@ class Pnj:
     def SetInfluence(self, amount):
         self.inf = amount
 
-    def IsKilled(self):
-        self.dead = True
-        self.killed = True
-
-    def IsSuicided(self):
+    def Suicide(self):
         self.dead = True
         self.suicided = True
 
-    def IsKidnapped(self):
-        self.kidnapped = True
-
-    def IsHavingSex(self, *names):
+    def HaveSex(self, *names):
         self.had_sex_with = True
         self.had_relationship.append(names)
 
@@ -212,7 +240,7 @@ class Pnj:
 
     def talk(self):
         if not self.enslaved:
-            print(random.choice(repliques))
+            print(random.choice(NPC.reply_list))
         else:
             print("...")
     def cry(self):
@@ -231,8 +259,8 @@ class Pnj:
     #################################################
     ### Actions using labels and screens
     #################################################
-    def CallLabel(self, mylabel):
-        renpy.call(mylabel)
+    def CallLabel(self, label):
+        renpy.call(label)
 
     #################################################
     ### Actions using images
@@ -245,9 +273,9 @@ class Pnj:
     #################################################
     def RandomName(self):
         if self.genre == "fem":
-            self.name = random.choice(WomenNames)
+            self.name = random.choice(NPC.fem_names_list)
         elif self.genre == "man":
-            self.name = random.choice(MaleNames)
+            self.name = random.choice(NPC.male_names_list)
         else:
             print("Genre is not properly defined")
 
@@ -263,16 +291,16 @@ class Pnj:
         self.inf += random.randint(0, 100)
 
     def RandomEnslavement(self):
-        self.enslaved = random.choice(BooleanList)
+        self.enslaved = random.choice(NPC.bool_list)
         if self.enslaved == True:
             self.GetEnslaved()
         else:
             self.free = True
 
     def RandomInventory(self):
-        x = random.randint(1, len(ItemList))
+        x = random.randint(1, len(NPC.item_list))
         while x > 0:
-            self.inventory.Add(random.choice(ItemList))
+            self.inventory.Add(random.choice(NPC.item_list))
             x -= 1
 
     ##################################################
@@ -304,7 +332,7 @@ class Pnj:
         else:
             print("I'm a slave and can't do anything if my master haven't ordered it to me...")
 
-    def GetEnslaved(self, owner): # pov of slave | Pnj is forced to
+    def GetEnslaved(self, owner): # pov of slave | npc is forced to
         if not self.enslaved:
             self.enslaved = True
             self.free = False
@@ -313,7 +341,7 @@ class Pnj:
             self.InventoryMerge(owner)
         else:
             print(f"{self.name} is already enslaved, we can't enslave someone twice!")
-    def Enslave(self, slave): # pov of owner | Pnj force someone
+    def Enslave(self, slave): # pov of owner | npc force someone
         if not slave.enslaved:
             slave.enslaved = True
             self.free = False
@@ -426,7 +454,7 @@ class Pnj:
     def OrderTo(self, slave, action, *args): # pov of owner/master
         if not self.enslaved:
             if slave in self.slaves:
-                pass ### Here are stored all the actions used when pnj is enslaved
+                pass ### Here are stored all the actions used when npc is enslaved
                 ### It will be implemented at the end
             else:
                 print(slave.name, "is not enslaved by", self.name)
@@ -442,24 +470,30 @@ class Pnj:
                 slave.owner = None
 
     #########################################################################
-    ### PNJ-Sim Methods including dynamic thoughts of every PNJs encountered
+    ### NPC-Sim Methods including dynamic thoughts of every NPCs encountered
     #########################################################################
     def Encounters(self, who):
-        if isinstance(who, Pnj):
+        if isinstance(who, NPC):
             if not who in self.encounters:
                 self.encounters.append(who)
                 if not who in self.thinks:
+                    trust = 0; susp = 0; love = 0; anger = 0; fear = 0;
+                ### Actions TODO:
+                    ### See karma
+                    ### See attachments (Factions)
+                    ### See if already heard
+                    ### See if pleases the npc
                     self.thinks[who] = {
-                        "trust": 0,
-                        "suspicion": 0,
-                        "love": 0,
-                        "anger": 0,
-                        "fear": 0,
+                        "trust": trust,
+                        "suspicion": susp,
+                        "love": love,
+                        "anger": anger,
+                        "fear": fear,
                         "corruption": 0,
                         "loyalty": 0,
                     }
         else:
-            print(who, "is not a Pnj() object")
+            print(who, "is not a NPC() object")
 
     ####################################################
     ### Taboo-Related Methods
@@ -477,7 +511,7 @@ class Pnj:
     def BreakTaboo(self, taboo):
         if self.taboos[taboo][1]:
             self.taboos[taboo][1] = False
-            renpy.log("taboo broken")
+            renpy.log(self.name+" has the "+str(taboo.name)+" broken")
         else:
             print(self.name, "has already this taboo broken")
 
@@ -540,7 +574,7 @@ class Pnj:
         if self.interacts != None:
             self.interacts = None
 
-    def SearchPeopleInRoom(self, step=False):
+    def SearchPeopleInRoom(self):
         l = []
         for people in self.inroom.people:
             if not people is self:
@@ -555,23 +589,181 @@ class Pnj:
         else:
             return False
 
-    def InteractWith(self, pnj):
+    def InteractsWith(self, npc):
         if self.can_interact != None:
-            if pnj in self.can_interact:
-                print("You are interacting with", pnj.name)
-                self.interacts = pnj
+            if npc in self.can_interact:
+                self.interacts = npc
+
+    ####################################################
+    ### Faction-Related Methods
+    ####################################################
+    def JoinFaction(self, faction):
+        faction.members.append(self)
+        self.free = False
+        self.joined.append(faction)
+
+    def QuitFaction(self, faction):
+        if len(self.joined) != 0:
+            if faction in self.joined:
+                self.joined[self.joined.index(faction)].members.remove(self)
+                self.joined.remove(faction)
+                self.free = True
+            else:
+                print(self, "diddn't joined", faction, "faction")
+        else:
+            print(self, "didn't joined any factions")
+
+########################################################
+###
+###
+### User-Input needed methods | Used while developing
+###
+### 
+########################################################
+
+    def CustomEyesColor(self):
+        t = ""
+        for color in NPC.eyes_color_list:
+            if NPC.eyes_color_list.index(color) != len(NPC.eyes_color_list)-1:
+                t += (color+", ")
+            else:
+                t += color
+        print("The available colours for the eyes are:\n", t)
+        choice = input("Enter the colour you chose: ")
+        if choice in NPC.eyes_color_list:
+            self.eyes_color = NPC.eyes_color_list[NPC.eyes_color_list.index(choice)]
+            print(self, "now have", choice, "eyes")
+        elif choice == "exit":
+            return
+        else:
+            print(choice, "couldn't be found")
+            self.CustomEyesColor()
+    def CustomHairColors(self):
+        t = ""
+        for color in NPC.hair_color_list:
+            if NPC.hair_color_list.index(color) != len(NPC.hair_color_list)-1:
+                t == (color+", ")
+            else:
+                t += color
+        print("The available colours for the hairs are:\n", t)
+        choice = input("Enter the colour you chose: ")
+        if choice in NPC.hair_color_list:
+            self.hair_color = NPC.hair_color_list[NPC.hair_color_list.index(choice)]
+            print(self, "have now", choice, "hairs")
+        elif choice == "exit":
+            return
+        else:
+            print(choice, "couldn't be found")
+            self.CustomHairColors()
+    def CustomHaircut(self):
+        t = ""
+        for haircut in NPC.haircut_list:
+            if NPC.haircut_list.index(haircut) != len(NPC.haircut_list)-1:
+                t += (haircut+", ")
+            else:
+                t += haircut
+        print("The available haircuts are:\n", t)
+        choice = input("Enter the haircut you chose: ")
+        if choice in NPC.haircut_list:
+            self.haircut = NPC.haircut_list[NPC.haircut_list.index(choice)]
+            print(self, "have now a", choice, "haircut")
+        elif choice == "exit":
+            return
+        else:
+            print(choice, "couldn't be found")
+            self.CustomHaircut()
+    def CustomHairStyles(self):
+        t = ""
+        for style in NPC.hair_styles_list:
+            if NPC.hair_styles_list.index(style) != len(NPC.hair_styles_list)-1:
+                t += (style+", ")
+            else:
+                t += style
+        print("The available hair styles are:\n", t)
+        choice = input("Enter the hair style you chose: ")
+        if choice in NPC.hair_styles_list:
+            self.hair_style = NPC.hair_styles_list[NPC.hair_styles_list.index(choice)]
+            print(self, "have now a", choice, "hair style")
+        elif choice == "exit":
+            return
+        else:
+            print(choice, "couldn't be found")
+            self.CustomHairStyles()
+    def CustomSkinColor(self):
+        t = ""
+        for colour in NPC.skin_color_list:
+            if NPC.skin_color_list.index(colour) != len(NPC.skin_color_list)-1:
+                t += (colour+", ")
+            else:
+                t += colour
+        print("The available skin colours are:\n", t)
+        choice = input("Enter the colour you chose: ")
+        if choice in NPC.skin_color_list:
+            self.skin_color = NPC.skin_color_list[NPC.skin_color_list.index(choice)]
+            print(self, "have now a", choice, "skin")
+        elif choice == "exit":
+            return
+        else:
+            print(choice, "couldn't be found")
+            self.CustomSkinColor()
+    def CustomFacialPilosity(self):
+        t = ""
+        for pilosity_style in NPC.facial_pilosity_list:
+            if NPC.facial_pilosity_list.index(pilosity_style) != len(NPC.facial_pilosity_list)-1:
+                t += (pilosity_style+", ")
+            else:
+                t += pilosity_style
+        print("The available face pilosity are:\n", t)
+        choice = input("Enter the pilosity you chose: ")
+        if choice in NPC.facial_pilosity_list:
+            self.skin_color = NPC.facial_pilosity_list[NPC.facial_pilosity_list.index(choice)]
+            print(self, "have now a", choice, "facial pilosity")
+        elif choice == "exit":
+            return
+        else:
+            print(choice, "couldn't be found")
+            self.CustomFacialPilosity()
+    def CustomBreastSize(self):
+        t = ""
+        for size in NPC.breast_size_list:
+            if NPC.breast_size_list.index(size) != len(NPC.breast_size_list):
+                t += (size+", ")
+            else:
+                t += size
+        print("The available breast sizes are:\n", t)
+        choice = input("Enter the size you chose: ")
+        if choice in NPC.breast_size_list:
+            self.breast_size = NPC.breast_size_list[NPC.breast_size_list.index(choice)]
+            print(self, "now have", choice, "breasts")
+        elif choice == "exit":
+            return
+        else:
+            print(choice, "couldn't be found")
+            self.CustomBreastSize()
+    def CustomAssSize(self):
+        t = ""
+        for size in NPC.ass_size_list:
+            if NPC.ass_size_list.index(size) != len(NPC.ass_size_list):
+                t += (size+", ")
+            else:
+                t += size
+        print("The available ass sizes are:\n", t)
+        choice = input("Enter the size you chose: ")
+        if choice in NPC.ass_size_list:
+            self.ass_size = NPC.ass_size_list[NPC.ass_size_list.index(choice)]
+            print(self, "now have a", choice, "ass")
+        elif choice == "exit":
+            return
+        else:
+            print(choice, "couldn't be found")
+            self.CustomAssSize()
 
 
 
-
-
-
-
-
-class MerchantMan(Pnj):
+class MerchantMan(NPC):
     """
         This class is special and complicated to use due to the fact that
-        all the methods are seen by the POV of the PNJ himself...
+        all the methods are seen by the POV of the NPC.
         The Buy() method is used to sell an object to the merchant.
         The Sell() method is used to buy an object from the merchant.
     """
@@ -628,7 +820,7 @@ class MerchantMan(Pnj):
             print("Oh... See you next time then!")
 
 
-class Travellers(Pnj):
+class Travellers(NPC):
     def UpdateClass(self):
         self.money = 20000
 

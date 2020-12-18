@@ -1,8 +1,8 @@
 import random
 import inventory
 import monsters
-import pnjs
-import lists
+import npc
+#import lists
 import datetime
 
 class Player:
@@ -136,33 +136,6 @@ def DefineVars(VariablesList):
         print(variable, "=", value)
 
 
-### Initialisation lines
-x = 0
-
-#### Entities
-player = Player("Admin")
-monster = monsters.Monster("Zombie")
-merchant = pnjs.MerchantMan(None); merchant.RandomName()
-pnj = pnjs.Pnj(None); pnj.RandomName(); pnj.RandomInventory() # Pnj used for tests
-pnj2 = pnjs.Pnj(None); pnj2.RandomName() # Pnj used for tests
-pnj3 = pnjs.Pnj(None); pnj3.RandomName() # Pnj used for tests
-#### Objects
-collar = inventory.items.Item("collar")
-dress = inventory.items.Item("dress")
 
 
 
-#player.inventory.Add(collar)
-#player.inventory.Add(dress)
-#player.inventory.ListEverything()
-
-merchant.RandomInventory()
-
-#print(f"{merchant.name}'s inventory: \n {merchant.inventory.content}")
-#print(f"{pnj.name}'s inventory: \n {pnj.inventory.content}")
-
-#merchant.GetEnslaved(pnj)
-#pnj.Enslave(pnj2)
-#pnj.Enslave(pnj3)
-#print(StoreObjectProperties(pnj))
-#DefineVars(StoreObjectProperties(pnj))

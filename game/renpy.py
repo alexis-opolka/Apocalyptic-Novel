@@ -1,4 +1,4 @@
-def say(who, what):
+def say(who="Dev", what="nothing"):
     print(who, "said", what)
 
 def jump(label):

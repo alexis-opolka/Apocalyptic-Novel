@@ -35,18 +35,18 @@ class Environment:
 
 
 class Room:
-        def __init__(self, environment, name="Place"):
-            if type(environment) is Environment:
-                environment.places.append(self)
-            else:
-                print("The given environment is not an object of the Environment() class")
-                print("We can't initialize a Place() object if we don't have any Environment() to be placed in...")
-                exit()
-            self.name = name
-            self.people = []
+    def __init__(self, environment, name="Place"):
+        if type(environment) is Environment:
+            environment.places.append(self)
+        else:
+            print("The given environment is not an object of the Environment() class")
+            print("We can't initialize a Place() object if we don't have any Environment() to be placed in...")
+            exit()
+        self.name = name
+        self.people = []
+        self.inventory = []
 
-        def Ask(self):
-            print("Well... It seems to work...")
+
 
 
 class Clock:
@@ -194,11 +194,11 @@ class Clock:
 
     def ShowAllInShell(self):
         if self.nbr_day < 10:
-            if self.short_month < 10:
-                print(f"0{self.nbr_day}/0{self.short_month}/{self.year}")
-            else:
-                print(f"0{self.nbr_day}/{self.short_month}/{self.year}")
-        elif self.short_month < 10:
-            print(f"{self.nbr_day}/0{self.short_month}/{self.year}")
+            temp_nbr_day = "0"+str(self.nbr_day)
         else:
-            print(f"{self.nbr_day}/{self.short_month}/{self.year}")
+            temp_nbr_day = self.nbr_day
+        if self.short_month < 10:
+            temp_short_month = "0"+str(self.short_month)
+        else:
+            temp_short_month = self.short_month
+        print("{}/{}/{}".format(temp_nbr_day, temp_short_month, self.year))

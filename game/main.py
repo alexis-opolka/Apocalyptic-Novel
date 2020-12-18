@@ -1,7 +1,7 @@
 from taboo import *
-from pnjs import Pnj
-from player import Player
-from factions import Faction as fct
+from npc import NPC
+#from player import Player
+import factions as fct
 import monsters as mstr
 import environment as env
 import economy as eco
@@ -18,11 +18,17 @@ chamber = env.Room(house, "Chamber")
 kitchen = env.Room(house, "Kitchen")
 
 #### PNJs
-master = Pnj(); master.RandomGender(); master.RandomName()
-pnj = Pnj(); pnj.RandomName(); pnj.RandomTaboo()
-pnj2 = Pnj("2")
-pnj3 = Pnj("3")
-pnj4 = Pnj("4")
+master = NPC(); master.RandomGender(); master.RandomName()
+chief_1 = NPC("Maximilian")
+pnj = NPC(); pnj.RandomName(); pnj.RandomTaboo()
+pnj2 = NPC("2")
+pnj3 = NPC("3")
+pnj4 = NPC("4")
+
+
+#### Factions
+Shagards = fct.Faction("Shagards", ("Anarchisme"), "Shouraves", "$", ("Sud_1", "Sud_2"))
+
 
 #### MarketPlaces
 Global = eco.GlobalMarketPlace()
@@ -43,3 +49,7 @@ Global = eco.GlobalMarketPlace()
 # à son need (la valeur entre 0 et 1000), 
 # et tu t'ajoutes prix x quantité d'argent
 
+### Tests Functions
+def StoreObjectPropertiesDict(object):
+    Properties = {p:getattr(object, p) for p in dir(object) if isinstance(getattr(object, p), (int, float, str, list, dict))}
+    return Properties

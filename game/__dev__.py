@@ -22,4 +22,5 @@ for entity in master.can_interact:
     if entry == entity.name or entry == entity:
         master.InteractWith(entity)
 
-#root.ChangeHour()
+
+master.JoinFaction(Shagards)
