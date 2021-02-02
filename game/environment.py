@@ -25,10 +25,10 @@ class World:
 
     def ChangeHour(self):
         self.clock.AddHour()
-        
+
     def ChangeDay(self):
         self.clock.AddDay()
-    
+
     def ChangeMonth(self):
         self.clock.AddMonth()
 
@@ -108,8 +108,8 @@ class Clock:
             ### "time_name" is displayed to the player
             ### start_time_hour is the hour where the time starts | used to set the hour if need
             ### end_time_hour is the hour where the time ends | used to see if we need to change the time of the day
-            ["morning", 6, 10], ["noon", 11, 12], 
-            ["afternoon", 13, 16], ["evening", 17, 21], 
+            ["morning", 6, 10], ["noon", 11, 12],
+            ["afternoon", 13, 16], ["evening", 17, 21],
             ["night", 22, 29]] #We set 30 instead of 6 because it creates bugs otherwise
         self.nbr_day = 1 ### It's the number of days in the month, the 1st, the 2nd, etc...
         ### self.minutes is divided in four parts, 0=15min, 1=30min, 2=45min, 3=60min
@@ -132,7 +132,7 @@ class Clock:
     ### Setting methods
     def SetHour(self, hour=6):
         self.hour = hour
-        
+
     def SetDay(self, day):
         self.day = day
 
@@ -222,7 +222,7 @@ class Clock:
             print("{}:{}, {}".format(self.hour, "0"+str(self.min) if self.min == 0 else self.min, self.time))
         else:
             print("{}:{}, {}".format((self.hour-24), "0"+str(self.min) if self.min == 0 else self.min, self.time))
-            
+
 
     def ShowAllInShell(self):
         if self.nbr_day < 10:
