@@ -9,6 +9,7 @@ import economy as eco
 ### Objects
 #### World, Environments and Rooms
 root = env.World()
+
 #### Evironments
 house = env.Environment(root)
 city = env.Environment(root)
@@ -27,26 +28,34 @@ pnj4 = NPC("4")
 
 
 #### Factions
-Shagards = fct.Faction("Shagards", ("Anarchisme"), "Shouraves", "$", ("Sud_1", "Sud_2"))
+shagards = fct.Faction(root, "Shagards", ("Anarchisme"), "Shouraves", "$", ("A1", "A1"))
+romans = fct.Faction(root, "Romains", ("Suprématie"), "Triens", "T", ("A1", "B1"))
 
+shagards.OwnLand("A1", True); shagards.RecruitTroops("A1", 3)
+romans.OwnLand("A2", True); romans.RecruitTroops("A2", 3)
+
+shagards.Encounters(romans, True); print(romans.relations, shagards.relations)
+shagards.DeclaresWar(romans, True); print(romans.relations, shagards.relations)
+
+shagards.MoveTroops("A1", "A2", root.map["A1"]["troops"])
 
 #### MarketPlaces
-Global = eco.GlobalMarketPlace()
+Global = eco.GlobalMarketPlace(root)
 
 
-#en gros pour chaque acteur j'ai une variable qui représente 
+#en gros pour chaque acteur j'ai une variable qui représente
 # sa demande (de 0 à 1000 mais ça pourrait aller de +inf à -inf)
 #plus une constante qui dit de combien sa demande augmente par jour
-#pour avoir un prix fixé entre 1 et 100 (que tu peux voir comme un 
-# pourcentage du prix maximal que l'acteur est prêt à payer) j'ai 
+#pour avoir un prix fixé entre 1 et 100 (que tu peux voir comme un
+# pourcentage du prix maximal que l'acteur est prêt à payer) j'ai
 # une formule à base de cotangente
-#int(50+math.atan(float(need)/float(conso))*100/math.pi), 
+#int(50+math.atan(float(need)/float(conso))*100/math.pi),
 # need et conso sont les deux variables ci-dessus
-#tu peux retirer le int si tu veux un prix flottant mais je trouve pas 
+#tu peux retirer le int si tu veux un prix flottant mais je trouve pas
 # ça super réaliste
-#et à chaque fois que tu vend (ici de l'épice), 
-# tu retranches la quantité vendue (ou une valeur qui y est proportionnelle) 
-# à son need (la valeur entre 0 et 1000), 
+#et à chaque fois que tu vend (ici de l'épice),
+# tu retranches la quantité vendue (ou une valeur qui y est proportionnelle)
+# à son need (la valeur entre 0 et 1000),
 # et tu t'ajoutes prix x quantité d'argent
 
 ### Tests Functions

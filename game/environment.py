@@ -10,12 +10,18 @@ class World:
        It manages some others systems not developed yet.
     """
     def __init__(self):
-        self.envs = []
         self.datetime = str(datetime.datetime.now)
         self.clock = Clock()
+
+        ### Lists
+        self.envs = []
+
+        ### Dictionaries
         self.map = {} ### Map as a dictionnary
-        self.InitMap(200)
-        print(self.map)
+
+
+        ### Functions called at __int__ after having initialized the different vars and ovjects
+        self.InitMap(5)
 
     def ChangeHour(self):
         self.clock.AddHour()
@@ -28,9 +34,9 @@ class World:
 
     ### Map-related methods
     def InitMap(self, size):
-        def GenerateDefaultCaseDict(x, y):
-            r = dict(coords=(x,y),owner=None,type="flat")
-            return r
+        def GenerateDefaultCellDict(x, y):
+            ### Here are defined the properties of each cell
+            return dict(coords=(x,y),type="flat", owner=None, status="good", troops=0, citizens=0)
 
         def GenerateCoordinateName(x, y):
             alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; r = ""; div = int(x); rem = 0
@@ -45,7 +51,7 @@ class World:
         for x in range(1, size+1):
             for y in range(1, size+1):
                 self.map.update({
-                    GenerateCoordinateName(x, y): GenerateDefaultCaseDict(x, y)
+                    GenerateCoordinateName(x, y): GenerateDefaultCellDict(x, y)
                 })
 
 
