@@ -17,17 +17,18 @@ def main():
                 print('Basic command line program')
                 print('Options:')
                 print(' --help -> show this basic help menu.')
-                print(' --monty -> show a Monty Python quote.')
-                print(' --veg -> show a random vegetable')
-            elif a == '--monty':
-                print('He’s not the Messiah—he’s a very naughty boy')
-            elif a == '--veg':
-                print(random.choice(['Tomato','Reddis','Carrot', 'Potato', 'Turnip']))
-            elif a == '--manage-imports':
+                print(' --handle-imports -> launch script to handle imports.')
+            elif a == '--handle-imports':
                 files_dir = fme.SearchFiles("game/")
                 for file in files_dir:
                     fme.ManageFileImports(file, "game/", ".")
                     print(f"[auto-import.py] {file}'s imports checked and managed")
+            elif a == '--handle-imports-dev':
+                files_dir = fme.SearchFiles("game/")
+                for file in files_dir:
+                    fme.ManageFileImports(file, "game/", ".")
+                    print(f"(DEV)[auto-import.py] {file}'s imports checked and managed")
+                os.system("python3 game/__dev__.py")
             else:
                 print('Unrecognised argument.')
 path = r"game/"

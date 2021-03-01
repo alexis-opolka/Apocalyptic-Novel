@@ -69,7 +69,6 @@ class Faction:
         else:
             print("We can't attack this cell:", from_troops_cell)
 
-
     def ConquerLand(self, cell_name, log=False):
         if cell_name in self.root.map:
             if cell_name not in self.territory:
@@ -80,6 +79,16 @@ class Faction:
                         print(self.name, "conquered", cell_name)
             else:
                 print("You can't conquer a cell you already own")
+
+    #### Non-Player methods
+    def GetCellStats(self, cell_name):
+        if cell_name in self.territory:
+            return self.root.map[cell_name]
+
+    def GetCellStatsHistory(self, cell_name):
+        if cell_name in self.territory:
+            return self.root.map[cell_name]
+
 
     ### Troops-Related methods
     def RecruitTroops(self, cell_name, amount, log=False):
@@ -105,11 +114,11 @@ class Faction:
                 self.TransferTroops(from_cell_name, to_cell_name, amount, True)
             if to_cell_name not in self.territory and to_cell_name in self.root.map:
                 if self.relations[self.root.map[to_cell_name]["owner"]] == "ennemy":
-                    ans = input("Do you really want to attack? ")
+                    ans = input("Do you really want to attack? [Y,N] ")
                     if ans.lower() in ["y", "yes"]:
                         self.AttackLand(from_cell_name, to_cell_name, amount, True)
                 if self.relations[self.root.map[to_cell_name]["owner"]] == "ally":
-                    ans = input("Do you really want to Transfer troops? ")
+                    ans = input("Do you really want to Transfer troops? [Y,N] ")
                     if ans.lower() in ["y", "yes"]:
                         self.TransferTroops(from_cell_name, to_cell_name, amount, True)
                 else:
