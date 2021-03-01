@@ -10,11 +10,12 @@ class GlobalMarketPlace:
         Picks the average between every EnvironmentMarketPlace() to have a price
         representating the global price of an item in the World()
     """
-    def __init__(self):
+    def __init__(self, root):
         #pass ### Placeholder, TODO: Create the system
         need = 50
         conso = 30
         self.test = int(50+math.atan(float(need)/float(conso))*100/math.pi)
+        self.root = root
 
 class EnvironmentMarketPlace:
     """

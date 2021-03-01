@@ -1,4 +1,7 @@
-try
-  py auto-import.py --manage-imports
+chmod +x  Zombie-Apocalypse.sh
 
-then pyhon3 auto-import.py --manage-imports
+#!/bin/bash
+# Print Hello world message
+python3 auto-import.py --handle-imports
+cd game
+python3 -i main.py
