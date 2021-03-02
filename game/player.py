@@ -1,14 +1,11 @@
 import random
 import inventory
-import monsters
-import npc
-#import lists
-
+from datetime import datetime as dte
 
 class Player:
     def __init__(self, name="player", age=19, color="#f9300c"):
         self.genre = random.choice(["fem", "man"])
-        self.__name = random.choice(lists.WomenNames) if self.genre == "fem" else random.choice(lists.MaleNames)
+        self.__name = name
         self.name = self.__name
         self.c = self.name
         self.color = color
@@ -99,7 +96,7 @@ def RetrieveSpecificData(data):
             return dict[data]
 def PrintInventoryInFile(entity):
     file = open("test-log.txt", "at")
-    file.write(f"Creation of {entity.name}'s inventory done the {str(datetime.datetime.now())}: \n")
+    file.write(f"Creation of {entity.name}'s inventory done the {str(dte.now())}: \n")
     for key, value in entity.inventory.content.items():
         file.write("    "+str(key)+" : "+str(value["base-object"])+"\n")
     file.write("\n")
