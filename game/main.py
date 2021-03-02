@@ -1,3 +1,4 @@
+from datetime import datetime as dte
 from taboo import *
 from npc import NPC
 from player import Player
@@ -117,6 +118,7 @@ za.EndProcess()
 
 
 
+print(f"{za.title} - {za.version} finished at: {dte.now()}\n\n")
 
 #en gros pour chaque acteur j'ai une variable qui représente
 # sa demande (de 0 à 1000 mais ça pourrait aller de +inf à -inf)
