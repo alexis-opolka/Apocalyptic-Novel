@@ -1,5 +1,3 @@
-import items
-
 class Inventory():
     def __init__(self):
         self.content = {}
@@ -23,23 +21,15 @@ class Inventory():
         if item.name in self.content:
             self.content[item.name]["count"] += 1
         else:
-            if item.count > 0:
-                self.content.update({
+            if item.count > 0: ### We check if the amount of items in Item() object is greater than zero
+                self.content.update({ ### If true: we add the item in the inventory for the first time
                     item.name: {
                         "count": 1,
                         "base-object": item
                     }
                 })
-                item.count -= 1
+                item.count -= 1 ### As we grabbed one item in the Item() object we remove 1 in the count
 
     def ListEverything(self):
         for key, value in self.content.items():
             print(f" {key} : {value['base-object'].all}")
-
-
-#dress = items.Item("dress")
-#collar = items.Item("collar")
-#inventory = Inventory()
-#inventory.Add(dress)
-#inventory.Add(collar)
-#inventory.ListEverything()

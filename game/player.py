@@ -3,7 +3,7 @@ import inventory
 import monsters
 import npc
 #import lists
-import datetime
+
 
 class Player:
     def __init__(self, name="player", age=19, color="#f9300c"):
@@ -17,8 +17,6 @@ class Player:
         self.money = 1000
         self.hadrelationship = []
         self.inventory = inventory.Inventory()
-        print("Zombie Apocalypse 2.1 (Alpha) (c) Unknown Games")
-        print("launched time:", str(datetime.datetime.now()), "\n\n")
 
     ###################################
     ### Actions including speaking
@@ -60,6 +58,11 @@ class Player:
     def ShowInventory(self):
         for item in self.inventory.content:
             print(f"- {item}")
+
+### End of Player Class
+
+
+
 
 def StoreData(variable, value):
     with open("cache.txt", "rt") as f:
@@ -134,8 +137,3 @@ def AddProperty(object, property, value):
 def DefineVars(VariablesList):
     for variable, value in VariablesList.items():
         print(variable, "=", value)
-
-
-
-
-

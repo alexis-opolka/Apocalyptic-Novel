@@ -1,14 +1,14 @@
 from lists import TabooList
-from renpy import Character
-import items as it
+from renpy import renpy
 import random
 import inventory
 import environment
-import renpy
 
 """
     This module contains the entire class for the NPC, no more no less.
 """
+
+
 
 class NPC:
     """
@@ -42,14 +42,12 @@ class NPC:
     reply_list = ("What ?", "I have nothing to say to you!", "What again ?!")
     #### Booleans
     bool_list = (True, False)
-    #### Items
-    item_list = [it.dress, it.collar, it.pen, it.bag_eastpak, it.jacket, it.knife, it.ak47]
 
-    
+
     def __init__(self, name="???", color="#f9300c", genre="fem", minage=17, maxage=36, isenslaved=False, profile_image="images/pnj.png", font="Avara.tff", dialogue_color="#ffffff"):
-        
+
         ### Strings Creator-defined
-        self.c = Character(name, #The name to be displayed above the dialogue.
+        self.c = renpy.Character(name, #The name to be displayed above the dialogue.
             what_font = font, #The font to be used for the character.
             who_font = font,
             color = color, #The colour of the character's NAME section
@@ -66,12 +64,12 @@ class NPC:
         else:
             self.genren = "Undefined" # Name used to properly define NPC's genre, here it's not given or NPC is non binary
         self.status = NPC.status_list[0]
-        
+
         ### Strings Randomly defined
         self.hair_color = random.choice(NPC.hair_color_list) # Store the hair color, after used to show layered images
         self.eyes_color = random.choice(NPC.eyes_color_list) # Store the eyes color, after used to show layered images
         self.born_city = random.choice(NPC.city_list) # Store the city of born, after used to change value of price when enslaved
-        
+
         ### Numbers: int/float | int preferred
         self.life = 100 # Life of npc | It's used for doing things who needs life to be sure to be able to come back
         self.trust = 0 # Trust of npc to someone | It's used to gain npc in the team of Player
@@ -124,6 +122,9 @@ class NPC:
 
         ### We call methods to set some base-properties
         self.SetTaboo()
+
+        ### Out game attributes
+        self.baseclass = NPC
 
     ######################################################
     ####    We have an impact on Vars of npc's
@@ -297,10 +298,10 @@ class NPC:
         else:
             self.free = True
 
-    def RandomInventory(self):
-        x = random.randint(1, len(NPC.item_list))
+    def RandomInventory(self, items_list):
+        x = random.randint(1, items_list)
         while x > 0:
-            self.inventory.Add(random.choice(NPC.item_list))
+            self.inventory.Add(random.choice(items_list))
             x -= 1
 
     ##################################################
@@ -520,7 +521,7 @@ class NPC:
             self.SetTaboo()
         if type(len(self.taboos)/2) is int:
             x = random.randint(1, len(self.taboos)/2)
-        else: 
+        else:
             x = random.randint(1, (int(len(self.taboos)/2)+1))
         y = 0; w = 0
         while y < x:
@@ -618,7 +619,7 @@ class NPC:
 ###
 ### User-Input needed methods | Used while developing
 ###
-### 
+###
 ########################################################
 
     def CustomEyesColor(self):
