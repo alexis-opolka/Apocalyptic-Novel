@@ -11,7 +11,7 @@ from items import (
     UsableItem,
     Weapon,
     Armor)
-from engine import Engine
+import engine
 
 ################################################################################
 ###
@@ -21,10 +21,12 @@ from engine import Engine
 ###
 ################################################################################
 ### Base of working of ZA
-za = Engine("Zombie Apocalypse", "0.2", "Unknown Games")
+za = engine.Engine("Zombie Apocalypse", "0.2", "Unknown Games")
+za.StartProcess()
 
-ZaList, ZaDict, ZaStr = Engine.ZaList, Engine.ZaDict, Engine.ZaStr ### Simplifying the writing of Program-Classes
-engine_list = ZaList(["test", "test2"])
+### Simplifying the writing of Program-Classes
+ZaList, ZaDict, ZaStr = engine.ZaList, engine.ZaDict, engine.ZaStr
+engine_list = ZaList(["test_list_element", "test_list_element_2"])
 engine_dict = ZaDict("test_key", "test_value")
 engine_str = ZaStr("test_string")
 
@@ -40,7 +42,7 @@ bathroom = env.Room(house, "Bathroom")
 chamber = env.Room(house, "Chamber")
 kitchen = env.Room(house, "Kitchen")
 
-### PNJs
+### NPCs
 master = NPC()
 chief_1 = NPC("Maximilian")
 pnj = NPC()
@@ -74,7 +76,7 @@ plastron = Armor("Plastron", 40)
 
 
 ### Program-wide global variables
-items_list = []
+
 
 
 
@@ -110,7 +112,6 @@ print(engine_dict, engine_list, engine_str)
 #print(items_list)
 #print(globals())
 open("_debug-info.txt", "w").write(za.DictToStr(za.StoreObjectAttributesDict(master)))
-
 
 za.EndProcess()
 
