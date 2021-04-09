@@ -1,10 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtGui import *
-from PyQt5.QtWebKitWidgets import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
+from PyQt5 import QtGui as QtGui
+try:
+    from PyQt5 import QtWebKitWidgets as QtWebKitWidgets
+except:
+    from PyQt5 import QtWebEngineWidgets as QtWebKitWidgets
+from PyQt5 import QtWidgets as QtWidgets
+from PyQt5 import QtCore as QtCore
+from QtGui import *
+from QtWebKitWidgets import *
+from QtWidgets import *
+from QtCore import *
+
+
 import os
 import sys
 import urllib
@@ -128,10 +137,10 @@ class ZaList(object):
 
     def __class__(self):
         pass
-        
+
     def __call__(self):
         return self.attr
-      
+
     def __repr__(self) -> str:
         return str(self.attr)
 
@@ -323,7 +332,7 @@ class WebBrowser(QWidget):
 
            urlText = self.lNameLine[self.tabs.currentIndex()].text()
 
-           ########################## 
+           ##########################
            # no protocol?
            if 'http' not in urlText:
                self.lNameLine[self.tabs.currentIndex()].setText( 'https://' + urlText)
