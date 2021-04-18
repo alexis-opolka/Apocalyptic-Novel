@@ -36,7 +36,7 @@ def main():
             elif a == '--handle-imports-testrun':
                 files_dir = fme.SearchFiles("game/")
                 for file in files_dir:
-                    fme.ManageFileImports(file, "game/", ".")
+                    fme.ManageFileImports(file, "game/", ".", "[auto-import.py]")
                     print(f"[auto-import.py] {file}'s imports checked and managed'")
                 print("We're going to run the main.py file to ensure the well importation of libs...")
 

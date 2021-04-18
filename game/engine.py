@@ -1,17 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from PyQt5 import QtGui as QtGui
+from PyQt5.QtGui import *
 try:
-    from PyQt5 import QtWebKitWidgets as QtWebKitWidgets
+    from PyQt5.QtWebKitWidgets import * ### Support for Linux
 except:
-    from PyQt5 import QtWebEngineWidgets as QtWebKitWidgets
-from PyQt5 import QtWidgets as QtWidgets
-from PyQt5 import QtCore as QtCore
-from QtGui import *
-from QtWebKitWidgets import *
-from QtWidgets import *
-from QtCore import *
+    from PyQt5.QtWebEngineWidgets import * ### Support for Windows
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
 
 
 import os
@@ -33,15 +29,19 @@ class Engine:
         self.exec_time = None
         self.example_host = "http://www.gitlab.com" ### An host used as an example to check wifi connectivity
 
-        ### OS only properties
+        ### OS-related properties
         self.linux = False
         self.macintosh = False
         self.windows = False
+        self.platform = ""
 
         ### environment
         self.env = os.environ
-        self.username = self.GetHostname()
         self.GetOsName()
+        if self.linux is True:
+            self.username = self.GetHostname()
+        else:
+            self.username = self.GetUsername()
         self.wifi = {} ### `nom du wifi`, `True` si connecté sinon `False`
 
         self.Qt_app = QApplication(sys.argv)
@@ -55,8 +55,12 @@ class Engine:
     ### Program-Execution methods
     def StartProcess(self):
         self.start_time = dte.now()
-        self.window.exec()
-        self.Qt_app.exec_()
+        execute = input("Do you want to launch the QT window [Y/N]: ")
+        if execute.lower() == "y":
+            self.window.exec()
+            self.Qt_app.exec_()
+        else:
+            return
 
     def EndProcess(self):
         self.end_time = dte.now()
@@ -72,10 +76,13 @@ class Engine:
     def GetOsName(self):
         if os.name == "posix": ### This is Linux systems
             self.linux = True
+            self.platform = "Linux"
         elif os.name == "nt": ### This is Macintosh systems
             self.macintosh = True
+            self.platform = "MacOs"
         else: ### We fall on the windows systems
             self.windows = True
+            self.platform = "Windows"
 
     def GetUsername(self):
         if self.linux is True or self.windows is True:
@@ -201,7 +208,7 @@ class WebBrowser(QWidget):
         self.label = QLabel("Here is the WebBrowser() window")
         layout.addWidget(self.label)
         self.setLayout(layout)
-        super(WebBrowser, self).__init__()
+        super().__init__()
         #self.window_title = window_title
         #self.setAttribute(Qt.WA_DeleteOnClose)
         #self.tabs = QTabWidget()
