@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from libs.typeshed import *
 from PyQt5.QtGui import *
 try:
     from PyQt5.QtWebKitWidgets import * ### Support for Linux
@@ -12,6 +13,7 @@ from PyQt5.QtCore import *
 
 import os
 import sys
+import platform
 import urllib
 from typing import Type
 from datetime import datetime as dte
@@ -30,8 +32,8 @@ class Engine:
         self.example_host = "http://www.gitlab.com" ### An host used as an example to check wifi connectivity
 
         ### OS-related properties
+        self.supported_os = ["Linux", "Windows"]
         self.linux = False
-        self.macintosh = False
         self.windows = False
         self.platform = ""
 
@@ -44,7 +46,7 @@ class Engine:
             self.username = self.GetUsername()
         self.wifi = {} ### `nom du wifi`, `True` si connecté sinon `False`
 
-        self.Qt_app = QApplication(sys.argv)
+        self.Qt_app = None#QApplication(sys.argv)
         #self.browser = WebBrowser(str(self.title + " browser"))
         self.window = VisualEngine(self.title)
 
@@ -55,12 +57,6 @@ class Engine:
     ### Program-Execution methods
     def StartProcess(self):
         self.start_time = dte.now()
-        execute = input("Do you want to launch the QT window [Y/N]: ")
-        if execute.lower() == "y":
-            self.window.exec()
-            self.Qt_app.exec_()
-        else:
-            return
 
     def EndProcess(self):
         self.end_time = dte.now()
@@ -69,20 +65,22 @@ class Engine:
 
     def quit(self):
         print(f"\n\n{self.title} - {self.version} finished at: {self.end_time}")
-        print(f"Process Execution Time: {self.exec_time}\n\n")
+        print(f"Process Execution Time: {self.exec_time}")
+        print(f"Ran on {self.platform if self.platform != '' else None}\n\n")
         exit()
 
-    ### OS only methods
+    ### OS-related methods
     def GetOsName(self):
-        if os.name == "posix": ### This is Linux systems
-            self.linux = True
-            self.platform = "Linux"
-        elif os.name == "nt": ### This is Macintosh systems
-            self.macintosh = True
-            self.platform = "MacOs"
-        else: ### We fall on the windows systems
-            self.windows = True
-            self.platform = "Windows"
+        system = platform.system()
+
+        if system in self.supported_os:
+            self.platform = system
+            if system == "Linux":
+                self.SetVariable("linux", True)
+            else:
+                self.SetVariable("windows", True)
+        else:
+            raise Exception("SupportError: Sorry, you launched the game with a system which we don't support.")
 
     def GetUsername(self):
         if self.linux is True or self.windows is True:
@@ -98,10 +96,9 @@ class Engine:
 
 
     ### Engine utilities
-    #### Functions used in conditions
-    def IsAttribute(self, attribute_name, object):
+    #### Methods used in conditions
+    def IsAttribute(self, object, attribute_name):
         properties = self.StoreObjectAttributesDict(object)
-        print(properties, "\n\n\n")
         if attribute_name in properties:
             return True
         else:
@@ -114,9 +111,36 @@ class Engine:
         except:
             return False
 
+    #### Methods for actions
+    def StartQtProcess(self):
+        execute = input("Do you want to launch the QT window [Y/N]: ")
+        if execute.lower() == "y":
+            self.window.exec()
+            self.Qt_app.exec_()
+        else:
+            return
     def OpenBrowser(self):
         self.browser.show()
 
+    ### Variables-access related methods
+    def SetVariable(self, variable, value):
+        if self.IsAttribute(self, variable):
+            variable = value
+        else:
+            exec(f"""global {variable}\n{variable} = {value}""")
+
+    def ToggleVariable(self, variable, kind_one=None, kind_two=None):
+        if kind_one is None and kind_two is None:
+            if type(variable) in [bool, NoneType]:
+                if variable is False:
+                    variable = True
+                else:
+                    variable = False
+        else:
+            if variable == kind_one:
+                variable = kind_two
+            else:
+                variable = kind_one
 
     ### Debug utilities
     #### Object-wide related methods
@@ -208,7 +232,7 @@ class WebBrowser(QWidget):
         self.label = QLabel("Here is the WebBrowser() window")
         layout.addWidget(self.label)
         self.setLayout(layout)
-        super().__init__()
+        super().__init__(self, WebBrowser)
         #self.window_title = window_title
         #self.setAttribute(Qt.WA_DeleteOnClose)
         #self.tabs = QTabWidget()

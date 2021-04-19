@@ -21,8 +21,8 @@ import engine
 ###
 ################################################################################
 ### Base of working of ZA
-za = engine.Engine("Zombie Apocalypse", "0.2", "Unknown Games")
-za.StartProcess()
+za_engine = engine.Engine("Zombie Apocalypse", "0.2", "Unknown Games")
+za_engine.StartProcess()
 
 ### Simplifying the writing of Program-Classes
 ZaList, ZaDict, ZaStr = engine.ZaList, engine.ZaDict, engine.ZaStr
@@ -108,18 +108,19 @@ pnj.RandomName(); pnj.RandomTaboo()
 ###
 ###
 ################################################################################
+za_engine.StartQtProcess()
 print(engine_dict, engine_list, engine_str)
 #print(items_list)
 #print(globals())
-open("_debug-info.txt", "w").write(za.DictToStr(za.StoreObjectAttributesDict(master)))
+open("_debug-info.txt", "w").write(za_engine.DictToStr(za_engine.StoreObjectAttributesDict(master)))
 
-za.EndProcess()
-
-
+za_engine.EndProcess()
 
 
 
-print(f"{za.title} - {za.version} finished at: {dte.now()}\n\n")
+
+
+print(f"{za_engine.title} - {za_engine.version} finished at: {dte.now()}\n\n")
 
 #en gros pour chaque acteur j'ai une variable qui représente
 # sa demande (de 0 à 1000 mais ça pourrait aller de +inf à -inf)
