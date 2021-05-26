@@ -109,7 +109,7 @@
 - breast_size_list: ['little', 'average', 'big']
 - c: None
 - can_interact: []
-- city_list: ['Paris', 'Béziers', 'London', 'Berlin', 'New York', 'Los Angeles', 'San Francisco']
+- city_list: ['Paris', 'Bï¿½ziers', 'London', 'Berlin', 'New York', 'Los Angeles', 'San Francisco']
 - color: #f9300c
 - corr: 0
 - cry: <bound method NPC.cry of <npc.NPC object at 0x000001C918B1F9A0>>
@@ -120,7 +120,7 @@
 - eyes_color_list: ['grey', 'blue', 'yellow', 'green', 'red', 'brown']
 - facial_pilosity_list: ['little', 'average', 'big']
 - fear: 0
-- fem_names_list: ['Millie', 'Camille', 'Jade', 'Marine', 'Andréa']
+- fem_names_list: ['Millie', 'Camille', 'Jade', 'Marine', 'Andrï¿½a']
 - free: True
 - genre: man
 - genren: Woman
@@ -151,7 +151,11 @@
 - price: 5977
 - profile_image: images/pnj.png
 - records: {}
+- relationships: []
 - reply_list: ('What ?', 'I have nothing to say to you!', 'What again ?!')
+- setTabooList: <bound method NPC.setTabooList of <npc.NPC object at 0x7f96304171c0>>
+- sex: fem
+- sex_name: Woman
 - shame: 100
 - skin_color_list: ['white', 'asian', 'black']
 - slaves: []
