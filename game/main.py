@@ -151,11 +151,11 @@ za_engine.StartQtProcess()
 print(engine_dict, engine_list, engine_str)
 #print(items_list)
 #print(globals())
-open("_debug-info.txt", "w").write(za.DictToStr(za.StoreObjectAttributesDict(master)))
+open("_debug-info.txt", "w").write(za_engine.DictToStr(za_engine.StoreObjectAttributesDict(master)))
 print(NPC.taboo_list)
-za.EndProcess()
+za_engine.EndProcess()
 
-print(f"{za.title} - {za.version} finished at: {dte.now()}\n\n")
+print(f"{za_engine.title} - {za_engine.version} finished at: {dte.now()}\n\n")
 
 #en gros pour chaque acteur j'ai une variable qui représente
 # sa demande (de 0 à 1000 mais ça pourrait aller de +inf à -inf)

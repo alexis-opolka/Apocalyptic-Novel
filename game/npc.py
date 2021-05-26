@@ -1,4 +1,3 @@
-from lists import TabooList
 from renpy import renpy
 import random
 import inventory
@@ -518,8 +517,10 @@ class NPC: #TODO: Change __init__ to have less dependencies
     ### Taboo-Related Methods
     ####################################################
     def SetTaboo(self):
-        for taboo in TabooList:
+        #print("NPC:", NPC.taboo_list)
+        for taboo in NPC.taboo_list:
             self.taboos[taboo] = [False, True, False]
+        #print("SELF:", self.taboo_list)
 
     def AddTaboo(self, taboo):
         if not self.taboos[taboo][0]:
@@ -544,10 +545,10 @@ class NPC: #TODO: Change __init__ to have less dependencies
         y = 0; w = 0
         while y < x:
             z = random.randint(0, len(self.taboos)-1)
-            z = TabooList[z];
+            z = NPC.taboo_list[z];
             if not w == len(self.taboos):
-                if z.contrary is not None:
-                    if not self.taboos[z.contrary][0]:
+                if z.getContrary() is not None:
+                    if not self.taboos[z.getContrary()][0]:
                         if not self.taboos[z][0]:
                             self.taboos[z][0] = True
                             y += 1; w = 0

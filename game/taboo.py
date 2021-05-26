@@ -1,5 +1,3 @@
-import lists
-
 """
     Module containing all the differents Taboos and their class
 """
@@ -11,8 +9,12 @@ class Taboo:
         else:
             print("The contrary isn't a Taboo() object")
             return
-        lists.TabooList.append(self)
 
     def SetContrary(self, contrary):
         self.contrary = contrary
         contrary.contrary = self
+
+    def getContrary(self):
+        if self.contrary != None:
+            return self.contrary
+        return None
