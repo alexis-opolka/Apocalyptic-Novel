@@ -22,7 +22,7 @@ import engine
 ################################################################################
 ### Base of working of ZA
 za_engine = engine.Engine("Zombie Apocalypse", "0.2", "Unknown Games")
-za_engine.StartProcess()
+
 
 ### Simplifying the writing of Program-Classes
 ZaList, ZaDict, ZaStr = engine.ZaList, engine.ZaDict, engine.ZaStr
@@ -43,45 +43,38 @@ chamber = env.Room(house, "Chamber")
 kitchen = env.Room(house, "Kitchen")
 
 ### Taboo system
+taboo_list = []
 #### We initialize the taboos & executed the minimal settings
+Taboo.setGlobalList(taboo_list)
 taboo_nude = Taboo("Nudity")
 taboo_wear = Taboo("Wearing")
-taboo_nude.SetContrary(taboo_wear)
+taboo_nude.setContrary(taboo_wear)
 
 taboo_sex = Taboo("Sex")
 taboo_nosex = Taboo("No Sex")
-taboo_sex.SetContrary(taboo_nosex)
+taboo_sex.setContrary(taboo_nosex)
 
 taboo_bj = Taboo("Blowjob")
 taboo_nobj = Taboo("No Blowjob")
-taboo_bj.SetContrary(taboo_nobj)
+taboo_bj.setContrary(taboo_nobj)
 
 taboo_kill = Taboo("Killing")
 taboo_save = Taboo("Saving")
-taboo_kill.SetContrary(taboo_save)
+taboo_kill.setContrary(taboo_save)
 
 taboo_egality = Taboo("Equality")
 taboo_slavery = Taboo("Slavery")
-taboo_egality.SetContrary(taboo_slavery)
+taboo_egality.setContrary(taboo_slavery)
 
 taboo_capitalism = Taboo("Capitalism")
 taboo_socialism = Taboo("Socialism")
-taboo_capitalism.SetContrary(taboo_socialism)
+taboo_capitalism.setContrary(taboo_socialism)
 
 taboo_test = Taboo("test")
 
-taboo_list = [
-    taboo_nude, taboo_wear,
-    taboo_sex, taboo_nobj,
-    taboo_bj, taboo_nobj,
-    taboo_kill, taboo_save,
-    taboo_egality, taboo_slavery,
-    taboo_capitalism, taboo_socialism
-    ]
-
+### NPCs
 NPC.setTabooList(taboo_list)
 
-### NPCs
 master = NPC()
 chief_1 = NPC("Maximilian")
 pnj = NPC()
@@ -147,12 +140,12 @@ pnj.RandomName(); pnj.RandomTaboo()
 ###
 ###
 ################################################################################
-za_engine.StartQtProcess()
-print(engine_dict, engine_list, engine_str)
+za_engine.StartQtProcess(maximized=True)
+#print(engine_dict, engine_list, engine_str)
 #print(items_list)
 #print(globals())
 open("_debug-info.txt", "w").write(za_engine.DictToStr(za_engine.StoreObjectAttributesDict(master)))
-print(NPC.taboo_list)
+#print(NPC.taboo_list)
 za_engine.EndProcess()
 
 print(f"{za_engine.title} - {za_engine.version} finished at: {dte.now()}\n\n")

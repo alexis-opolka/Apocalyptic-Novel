@@ -1,72 +1,72 @@
-- AddAnger: <bound method NPC.AddAnger of <npc.NPC object at 0x0000024FA806C640>>
-- AddCorruption: <bound method NPC.AddCorruption of <npc.NPC object at 0x0000024FA806C640>>
-- AddFear: <bound method NPC.AddFear of <npc.NPC object at 0x0000024FA806C640>>
-- AddLove: <bound method NPC.AddLove of <npc.NPC object at 0x0000024FA806C640>>
-- AddLoyalty: <bound method NPC.AddLoyalty of <npc.NPC object at 0x0000024FA806C640>>
-- AddSuspicion: <bound method NPC.AddSuspicion of <npc.NPC object at 0x0000024FA806C640>>
-- AddTaboo: <bound method NPC.AddTaboo of <npc.NPC object at 0x0000024FA806C640>>
-- BreakTaboo: <bound method NPC.BreakTaboo of <npc.NPC object at 0x0000024FA806C640>>
-- CallLabel: <bound method NPC.CallLabel of <npc.NPC object at 0x0000024FA806C640>>
-- CustomAssSize: <bound method NPC.CustomAssSize of <npc.NPC object at 0x0000024FA806C640>>
-- CustomBreastSize: <bound method NPC.CustomBreastSize of <npc.NPC object at 0x0000024FA806C640>>
-- CustomEyesColor: <bound method NPC.CustomEyesColor of <npc.NPC object at 0x0000024FA806C640>>
-- CustomFacialPilosity: <bound method NPC.CustomFacialPilosity of <npc.NPC object at 0x0000024FA806C640>>
-- CustomHairColors: <bound method NPC.CustomHairColors of <npc.NPC object at 0x0000024FA806C640>>
-- CustomHairStyles: <bound method NPC.CustomHairStyles of <npc.NPC object at 0x0000024FA806C640>>
-- CustomHaircut: <bound method NPC.CustomHaircut of <npc.NPC object at 0x0000024FA806C640>>
-- CustomSkinColor: <bound method NPC.CustomSkinColor of <npc.NPC object at 0x0000024FA806C640>>
-- Encounters: <bound method NPC.Encounters of <npc.NPC object at 0x0000024FA806C640>>
-- Enslave: <bound method NPC.Enslave of <npc.NPC object at 0x0000024FA806C640>>
-- EnterRoom: <bound method NPC.EnterRoom of <npc.NPC object at 0x0000024FA806C640>>
-- ExitRoom: <bound method NPC.ExitRoom of <npc.NPC object at 0x0000024FA806C640>>
-- Free: <bound method NPC.Free of <npc.NPC object at 0x0000024FA806C640>>
-- GetAge: <bound method NPC.GetAge of <npc.NPC object at 0x0000024FA806C640>>
-- GetEnslaved: <bound method NPC.GetEnslaved of <npc.NPC object at 0x0000024FA806C640>>
-- GetName: <bound method NPC.GetName of <npc.NPC object at 0x0000024FA806C640>>
-- HasBrokenTaboo: <bound method NPC.HasBrokenTaboo of <npc.NPC object at 0x0000024FA806C640>>
-- HasTaboo: <bound method NPC.HasTaboo of <npc.NPC object at 0x0000024FA806C640>>
-- HaveSex: <bound method NPC.HaveSex of <npc.NPC object at 0x0000024FA806C640>>
-- InteractsWith: <bound method NPC.InteractsWith of <npc.NPC object at 0x0000024FA806C640>>
-- IsHealing: <bound method NPC.IsHealing of <npc.NPC object at 0x0000024FA806C640>>
-- IsHurted: <bound method NPC.IsHurted of <npc.NPC object at 0x0000024FA806C640>>
-- IsInRoom: <bound method NPC.IsInRoom of <npc.NPC object at 0x0000024FA806C640>>
-- JoinFaction: <bound method NPC.JoinFaction of <npc.NPC object at 0x0000024FA806C640>>
-- MergeInventory: <bound method NPC.MergeInventory of <npc.NPC object at 0x0000024FA806C640>>
-- OpenInventory: <bound method NPC.OpenInventory of <npc.NPC object at 0x0000024FA806C640>>
-- OrderTo: <bound method NPC.OrderTo of <npc.NPC object at 0x0000024FA806C640>>
-- PresentOwner: <bound method NPC.PresentOwner of <npc.NPC object at 0x0000024FA806C640>>
-- PresentSlave: <bound method NPC.PresentSlave of <npc.NPC object at 0x0000024FA806C640>>
-- Presents: <bound method NPC.Presents of <npc.NPC object at 0x0000024FA806C640>>
-- QuitFaction: <bound method NPC.QuitFaction of <npc.NPC object at 0x0000024FA806C640>>
-- RandomEnslavement: <bound method NPC.RandomEnslavement of <npc.NPC object at 0x0000024FA806C640>>
-- RandomGender: <bound method NPC.RandomGender of <npc.NPC object at 0x0000024FA806C640>>
-- RandomInfluence: <bound method NPC.RandomInfluence of <npc.NPC object at 0x0000024FA806C640>>
-- RandomInventory: <bound method NPC.RandomInventory of <npc.NPC object at 0x0000024FA806C640>>
-- RandomMoney: <bound method NPC.RandomMoney of <npc.NPC object at 0x0000024FA806C640>>
-- RandomName: <bound method NPC.RandomName of <npc.NPC object at 0x0000024FA806C640>>
-- RandomTaboo: <bound method NPC.RandomTaboo of <npc.NPC object at 0x0000024FA806C640>>
-- SayMyRelations: <bound method NPC.SayMyRelations of <npc.NPC object at 0x0000024FA806C640>>
-- SayStats: <bound method NPC.SayStats of <npc.NPC object at 0x0000024FA806C640>>
-- SearchPeopleInRoom: <bound method NPC.SearchPeopleInRoom of <npc.NPC object at 0x0000024FA806C640>>
-- SetInfluence: <bound method NPC.SetInfluence of <npc.NPC object at 0x0000024FA806C640>>
-- SetMoney: <bound method NPC.SetMoney of <npc.NPC object at 0x0000024FA806C640>>
-- SetSlavePrice: <bound method NPC.SetSlavePrice of <npc.NPC object at 0x0000024FA806C640>>
-- SetTaboo: <bound method NPC.SetTaboo of <npc.NPC object at 0x0000024FA806C640>>
-- ShowAt: <bound method NPC.ShowAt of <npc.NPC object at 0x0000024FA806C640>>
-- ShowInventory: <bound method NPC.ShowInventory of <npc.NPC object at 0x0000024FA806C640>>
-- Suicide: <bound method NPC.Suicide of <npc.NPC object at 0x0000024FA806C640>>
-- SustAnger: <bound method NPC.SustAnger of <npc.NPC object at 0x0000024FA806C640>>
-- SustCorruption: <bound method NPC.SustCorruption of <npc.NPC object at 0x0000024FA806C640>>
-- SustFear: <bound method NPC.SustFear of <npc.NPC object at 0x0000024FA806C640>>
-- SustLove: <bound method NPC.SustLove of <npc.NPC object at 0x0000024FA806C640>>
-- SustLoyalty: <bound method NPC.SustLoyalty of <npc.NPC object at 0x0000024FA806C640>>
-- SustSuspicion: <bound method NPC.SustSuspicion of <npc.NPC object at 0x0000024FA806C640>>
-- Train: <bound method NPC.Train of <npc.NPC object at 0x0000024FA806C640>>
-- TrainOnShame: <bound method NPC.TrainOnShame of <npc.NPC object at 0x0000024FA806C640>>
+- AddAnger: <bound method NPC.AddAnger of <npc.NPC object at 0x000001F36B28D490>>
+- AddCorruption: <bound method NPC.AddCorruption of <npc.NPC object at 0x000001F36B28D490>>
+- AddFear: <bound method NPC.AddFear of <npc.NPC object at 0x000001F36B28D490>>
+- AddLove: <bound method NPC.AddLove of <npc.NPC object at 0x000001F36B28D490>>
+- AddLoyalty: <bound method NPC.AddLoyalty of <npc.NPC object at 0x000001F36B28D490>>
+- AddSuspicion: <bound method NPC.AddSuspicion of <npc.NPC object at 0x000001F36B28D490>>
+- AddTaboo: <bound method NPC.AddTaboo of <npc.NPC object at 0x000001F36B28D490>>
+- BreakTaboo: <bound method NPC.BreakTaboo of <npc.NPC object at 0x000001F36B28D490>>
+- CallLabel: <bound method NPC.CallLabel of <npc.NPC object at 0x000001F36B28D490>>
+- CustomAssSize: <bound method NPC.CustomAssSize of <npc.NPC object at 0x000001F36B28D490>>
+- CustomBreastSize: <bound method NPC.CustomBreastSize of <npc.NPC object at 0x000001F36B28D490>>
+- CustomEyesColor: <bound method NPC.CustomEyesColor of <npc.NPC object at 0x000001F36B28D490>>
+- CustomFacialPilosity: <bound method NPC.CustomFacialPilosity of <npc.NPC object at 0x000001F36B28D490>>
+- CustomHairColors: <bound method NPC.CustomHairColors of <npc.NPC object at 0x000001F36B28D490>>
+- CustomHairStyles: <bound method NPC.CustomHairStyles of <npc.NPC object at 0x000001F36B28D490>>
+- CustomHaircut: <bound method NPC.CustomHaircut of <npc.NPC object at 0x000001F36B28D490>>
+- CustomSkinColor: <bound method NPC.CustomSkinColor of <npc.NPC object at 0x000001F36B28D490>>
+- Encounters: <bound method NPC.Encounters of <npc.NPC object at 0x000001F36B28D490>>
+- Enslave: <bound method NPC.Enslave of <npc.NPC object at 0x000001F36B28D490>>
+- EnterRoom: <bound method NPC.EnterRoom of <npc.NPC object at 0x000001F36B28D490>>
+- ExitRoom: <bound method NPC.ExitRoom of <npc.NPC object at 0x000001F36B28D490>>
+- Free: <bound method NPC.Free of <npc.NPC object at 0x000001F36B28D490>>
+- GetAge: <bound method NPC.GetAge of <npc.NPC object at 0x000001F36B28D490>>
+- GetEnslaved: <bound method NPC.GetEnslaved of <npc.NPC object at 0x000001F36B28D490>>
+- GetName: <bound method NPC.GetName of <npc.NPC object at 0x000001F36B28D490>>
+- HasBrokenTaboo: <bound method NPC.HasBrokenTaboo of <npc.NPC object at 0x000001F36B28D490>>
+- HasTaboo: <bound method NPC.HasTaboo of <npc.NPC object at 0x000001F36B28D490>>
+- HaveSex: <bound method NPC.HaveSex of <npc.NPC object at 0x000001F36B28D490>>
+- InteractsWith: <bound method NPC.InteractsWith of <npc.NPC object at 0x000001F36B28D490>>
+- IsHealing: <bound method NPC.IsHealing of <npc.NPC object at 0x000001F36B28D490>>
+- IsHurted: <bound method NPC.IsHurted of <npc.NPC object at 0x000001F36B28D490>>
+- IsInRoom: <bound method NPC.IsInRoom of <npc.NPC object at 0x000001F36B28D490>>
+- JoinFaction: <bound method NPC.JoinFaction of <npc.NPC object at 0x000001F36B28D490>>
+- MergeInventory: <bound method NPC.MergeInventory of <npc.NPC object at 0x000001F36B28D490>>
+- OpenInventory: <bound method NPC.OpenInventory of <npc.NPC object at 0x000001F36B28D490>>
+- OrderTo: <bound method NPC.OrderTo of <npc.NPC object at 0x000001F36B28D490>>
+- PresentOwner: <bound method NPC.PresentOwner of <npc.NPC object at 0x000001F36B28D490>>
+- PresentSlave: <bound method NPC.PresentSlave of <npc.NPC object at 0x000001F36B28D490>>
+- Presents: <bound method NPC.Presents of <npc.NPC object at 0x000001F36B28D490>>
+- QuitFaction: <bound method NPC.QuitFaction of <npc.NPC object at 0x000001F36B28D490>>
+- RandomEnslavement: <bound method NPC.RandomEnslavement of <npc.NPC object at 0x000001F36B28D490>>
+- RandomGender: <bound method NPC.RandomGender of <npc.NPC object at 0x000001F36B28D490>>
+- RandomInfluence: <bound method NPC.RandomInfluence of <npc.NPC object at 0x000001F36B28D490>>
+- RandomInventory: <bound method NPC.RandomInventory of <npc.NPC object at 0x000001F36B28D490>>
+- RandomMoney: <bound method NPC.RandomMoney of <npc.NPC object at 0x000001F36B28D490>>
+- RandomName: <bound method NPC.RandomName of <npc.NPC object at 0x000001F36B28D490>>
+- RandomTaboo: <bound method NPC.RandomTaboo of <npc.NPC object at 0x000001F36B28D490>>
+- SayMyRelations: <bound method NPC.SayMyRelations of <npc.NPC object at 0x000001F36B28D490>>
+- SayStats: <bound method NPC.SayStats of <npc.NPC object at 0x000001F36B28D490>>
+- SearchPeopleInRoom: <bound method NPC.SearchPeopleInRoom of <npc.NPC object at 0x000001F36B28D490>>
+- SetInfluence: <bound method NPC.SetInfluence of <npc.NPC object at 0x000001F36B28D490>>
+- SetMoney: <bound method NPC.SetMoney of <npc.NPC object at 0x000001F36B28D490>>
+- SetSlavePrice: <bound method NPC.SetSlavePrice of <npc.NPC object at 0x000001F36B28D490>>
+- SetTaboo: <bound method NPC.SetTaboo of <npc.NPC object at 0x000001F36B28D490>>
+- ShowAt: <bound method NPC.ShowAt of <npc.NPC object at 0x000001F36B28D490>>
+- ShowInventory: <bound method NPC.ShowInventory of <npc.NPC object at 0x000001F36B28D490>>
+- Suicide: <bound method NPC.Suicide of <npc.NPC object at 0x000001F36B28D490>>
+- SustAnger: <bound method NPC.SustAnger of <npc.NPC object at 0x000001F36B28D490>>
+- SustCorruption: <bound method NPC.SustCorruption of <npc.NPC object at 0x000001F36B28D490>>
+- SustFear: <bound method NPC.SustFear of <npc.NPC object at 0x000001F36B28D490>>
+- SustLove: <bound method NPC.SustLove of <npc.NPC object at 0x000001F36B28D490>>
+- SustLoyalty: <bound method NPC.SustLoyalty of <npc.NPC object at 0x000001F36B28D490>>
+- SustSuspicion: <bound method NPC.SustSuspicion of <npc.NPC object at 0x000001F36B28D490>>
+- Train: <bound method NPC.Train of <npc.NPC object at 0x000001F36B28D490>>
+- TrainOnShame: <bound method NPC.TrainOnShame of <npc.NPC object at 0x000001F36B28D490>>
 - __class__: <class 'npc.NPC'>
-- __delattr__: <method-wrapper '__delattr__' of NPC object at 0x0000024FA806C640>
-- __dict__: {'taboo_list': [<taboo.Taboo object at 0x0000024FA806C160>, <taboo.Taboo object at 0x0000024FA806C1C0>, <taboo.Taboo object at 0x0000024FA806C220>, <taboo.Taboo object at 0x0000024FA806C340>, <taboo.Taboo object at 0x0000024FA806C2E0>, <taboo.Taboo object at 0x0000024FA806C340>, <taboo.Taboo object at 0x0000024FA806C3A0>, <taboo.Taboo object at 0x0000024FA806C400>, <taboo.Taboo object at 0x0000024FA806C460>, <taboo.Taboo object at 0x0000024FA806C4C0>, <taboo.Taboo object at 0x0000024FA806C520>, <taboo.Taboo object at 0x0000024FA806C580>], 'c': None, 'age': 17, 'name': 'Millie', 'color': '#f9300c', 'sex': 'fem', 'profile_image': 'images/pnj.png', 'sex_name': 'Woman', 'status': 'normal', 'hair_color': 'brown', 'eyes_color': 'green', 'born_city': 'Berlin', 'life': 100, 'trust': 0, 'suspicion': 0, 'love': 0, 'anger': 0, 'fear': 0, 'corr': 0, 'loyalty': 0, 'inf': 30, 'price': 2181, 'money': 0, 'will': 85, 'obedience': 0, 'shame': 100, 'karma': 0, 'happiness': 100, 'enslaved': False, 'free': True, 'dead': False, 'suicided': False, 'killed': False, 'kidnapped': False, 'virgin': False, 'owner': None, 'inroom': None, 'interacts': None, 'knows': [], 'encounters': [], 'relationships': [], 'can_interact': [], 'slaves': [], 'joined': [], 'inventory': <inventory.Inventory object at 0x0000024FA806C670>, 'thinks': {}, 'taboos': {<taboo.Taboo object at 0x0000024FA806C160>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C1C0>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C220>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C340>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C2E0>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C3A0>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C400>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C460>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C4C0>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C520>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C580>: [False, True, False]}, 'records': {}, 'baseclass': <class 'npc.NPC'>, 'genre': 'fem'}
-- __dir__: <built-in method __dir__ of NPC object at 0x0000024FA806C640>
+- __delattr__: <method-wrapper '__delattr__' of NPC object at 0x000001F36B28D490>
+- __dict__: {'taboo_list': [<taboo.Taboo object at 0x000001F36B284F70>, <taboo.Taboo object at 0x000001F36B284FD0>, <taboo.Taboo object at 0x000001F36B28D070>, <taboo.Taboo object at 0x000001F36B28D0D0>, <taboo.Taboo object at 0x000001F36B28D130>, <taboo.Taboo object at 0x000001F36B28D190>, <taboo.Taboo object at 0x000001F36B28D1F0>, <taboo.Taboo object at 0x000001F36B28D250>, <taboo.Taboo object at 0x000001F36B28D2B0>, <taboo.Taboo object at 0x000001F36B28D310>, <taboo.Taboo object at 0x000001F36B28D370>, <taboo.Taboo object at 0x000001F36B28D3D0>, <taboo.Taboo object at 0x000001F36B28D430>], 'c': None, 'age': 19, 'name': 'Camille', 'color': '#f9300c', 'sex': 'fem', 'profile_image': 'images/pnj.png', 'sex_name': 'Woman', 'status': 'normal', 'hair_color': 'blond', 'eyes_color': 'blue', 'born_city': 'Béziers', 'life': 100, 'trust': 0, 'suspicion': 0, 'love': 0, 'anger': 0, 'fear': 0, 'corr': 0, 'loyalty': 0, 'inf': 30, 'price': 7078, 'money': 0, 'will': 47, 'obedience': 0, 'shame': 100, 'karma': 0, 'happiness': 100, 'enslaved': False, 'free': True, 'dead': False, 'suicided': False, 'killed': False, 'kidnapped': False, 'virgin': False, 'owner': None, 'inroom': None, 'interacts': None, 'knows': [], 'encounters': [], 'relationships': [], 'can_interact': [], 'slaves': [], 'joined': [], 'inventory': <inventory.Inventory object at 0x000001F36B28D4C0>, 'thinks': {}, 'taboos': {<taboo.Taboo object at 0x000001F36B284F70>: [False, True, False], <taboo.Taboo object at 0x000001F36B284FD0>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D070>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D0D0>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D130>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D190>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D1F0>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D250>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D2B0>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D310>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D370>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D3D0>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D430>: [False, True, False]}, 'records': {}, 'baseclass': <class 'npc.NPC'>, 'genre': 'fem'}
+- __dir__: <built-in method __dir__ of NPC object at 0x000001F36B28D490>
 - __doc__: 
         This class is only used for NPC.
         We alternate the Point of View(POV) for the actions and sometimes have the two pov available for
@@ -79,51 +79,51 @@
             - lists module
             - inventory module
     
-- __eq__: <method-wrapper '__eq__' of NPC object at 0x0000024FA806C640>
-- __format__: <built-in method __format__ of NPC object at 0x0000024FA806C640>
-- __ge__: <method-wrapper '__ge__' of NPC object at 0x0000024FA806C640>
-- __getattribute__: <method-wrapper '__getattribute__' of NPC object at 0x0000024FA806C640>
-- __gt__: <method-wrapper '__gt__' of NPC object at 0x0000024FA806C640>
-- __hash__: <method-wrapper '__hash__' of NPC object at 0x0000024FA806C640>
-- __init__: <bound method NPC.__init__ of <npc.NPC object at 0x0000024FA806C640>>
-- __init_subclass__: <built-in method __init_subclass__ of type object at 0x0000024FA5444530>
-- __le__: <method-wrapper '__le__' of NPC object at 0x0000024FA806C640>
-- __lt__: <method-wrapper '__lt__' of NPC object at 0x0000024FA806C640>
+- __eq__: <method-wrapper '__eq__' of NPC object at 0x000001F36B28D490>
+- __format__: <built-in method __format__ of NPC object at 0x000001F36B28D490>
+- __ge__: <method-wrapper '__ge__' of NPC object at 0x000001F36B28D490>
+- __getattribute__: <method-wrapper '__getattribute__' of NPC object at 0x000001F36B28D490>
+- __gt__: <method-wrapper '__gt__' of NPC object at 0x000001F36B28D490>
+- __hash__: <method-wrapper '__hash__' of NPC object at 0x000001F36B28D490>
+- __init__: <bound method NPC.__init__ of <npc.NPC object at 0x000001F36B28D490>>
+- __init_subclass__: <built-in method __init_subclass__ of type object at 0x000001F3686A15C0>
+- __le__: <method-wrapper '__le__' of NPC object at 0x000001F36B28D490>
+- __lt__: <method-wrapper '__lt__' of NPC object at 0x000001F36B28D490>
 - __module__: npc
-- __ne__: <method-wrapper '__ne__' of NPC object at 0x0000024FA806C640>
+- __ne__: <method-wrapper '__ne__' of NPC object at 0x000001F36B28D490>
 - __new__: <built-in method __new__ of type object at 0x00007FFE06E85E00>
-- __reduce__: <built-in method __reduce__ of NPC object at 0x0000024FA806C640>
-- __reduce_ex__: <built-in method __reduce_ex__ of NPC object at 0x0000024FA806C640>
-- __repr__: <method-wrapper '__repr__' of NPC object at 0x0000024FA806C640>
-- __setattr__: <method-wrapper '__setattr__' of NPC object at 0x0000024FA806C640>
-- __sizeof__: <built-in method __sizeof__ of NPC object at 0x0000024FA806C640>
-- __str__: <method-wrapper '__str__' of NPC object at 0x0000024FA806C640>
-- __subclasshook__: <built-in method __subclasshook__ of type object at 0x0000024FA5444530>
+- __reduce__: <built-in method __reduce__ of NPC object at 0x000001F36B28D490>
+- __reduce_ex__: <built-in method __reduce_ex__ of NPC object at 0x000001F36B28D490>
+- __repr__: <method-wrapper '__repr__' of NPC object at 0x000001F36B28D490>
+- __setattr__: <method-wrapper '__setattr__' of NPC object at 0x000001F36B28D490>
+- __sizeof__: <built-in method __sizeof__ of NPC object at 0x000001F36B28D490>
+- __str__: <method-wrapper '__str__' of NPC object at 0x000001F36B28D490>
+- __subclasshook__: <built-in method __subclasshook__ of type object at 0x000001F3686A15C0>
 - __weakref__: None
-- age: 17
+- age: 19
 - anger: 0
 - ass_size_list: ['little', 'average', 'big']
 - baseclass: <class 'npc.NPC'>
 - bool_list: (True, False)
-- born_city: Berlin
+- born_city: Béziers
 - breast_size_list: ['little', 'average', 'big']
 - c: None
 - can_interact: []
 - city_list: ['Paris', 'Béziers', 'London', 'Berlin', 'New York', 'Los Angeles', 'San Francisco']
 - color: #f9300c
 - corr: 0
-- cry: <bound method NPC.cry of <npc.NPC object at 0x0000024FA806C640>>
+- cry: <bound method NPC.cry of <npc.NPC object at 0x000001F36B28D490>>
 - dead: False
 - encounters: []
 - enslaved: False
-- eyes_color: green
+- eyes_color: blue
 - eyes_color_list: ['grey', 'blue', 'yellow', 'green', 'red', 'brown']
 - facial_pilosity_list: ['little', 'average', 'big']
 - fear: 0
 - fem_names_list: ['Millie', 'Camille', 'Jade', 'Marine', 'Andréa', 'Lily']
 - free: True
 - genre: fem
-- hair_color: brown
+- hair_color: blond
 - hair_color_list: ['brown', 'black', 'blond', 'ginger']
 - hair_styles_list: ['']
 - haircut_list: ['short', 'medium', 'long']
@@ -131,7 +131,7 @@
 - inf: 30
 - inroom: None
 - interacts: None
-- inventory: <inventory.Inventory object at 0x0000024FA806C670>
+- inventory: <inventory.Inventory object at 0x000001F36B28D4C0>
 - joined: []
 - karma: 0
 - kidnapped: False
@@ -142,15 +142,15 @@
 - loyalty: 0
 - male_names_list: ['Georges', 'Mathieu', 'Michael', 'Nicolas', 'Yohann']
 - money: 0
-- name: Millie
+- name: Camille
 - obedience: 0
 - owner: None
-- price: 2181
+- price: 7078
 - profile_image: images/pnj.png
 - records: {}
 - relationships: []
 - reply_list: ('What ?', 'I have nothing to say to you!', 'What again ?!')
-- setTabooList: <bound method NPC.setTabooList of <npc.NPC object at 0x0000024FA806C640>>
+- setTabooList: <bound method NPC.setTabooList of <npc.NPC object at 0x000001F36B28D490>>
 - sex: fem
 - sex_name: Woman
 - shame: 100
@@ -160,10 +160,10 @@
 - status_list: ['normal', 'pregnant']
 - suicided: False
 - suspicion: 0
-- taboo_list: [<taboo.Taboo object at 0x0000024FA806C160>, <taboo.Taboo object at 0x0000024FA806C1C0>, <taboo.Taboo object at 0x0000024FA806C220>, <taboo.Taboo object at 0x0000024FA806C340>, <taboo.Taboo object at 0x0000024FA806C2E0>, <taboo.Taboo object at 0x0000024FA806C340>, <taboo.Taboo object at 0x0000024FA806C3A0>, <taboo.Taboo object at 0x0000024FA806C400>, <taboo.Taboo object at 0x0000024FA806C460>, <taboo.Taboo object at 0x0000024FA806C4C0>, <taboo.Taboo object at 0x0000024FA806C520>, <taboo.Taboo object at 0x0000024FA806C580>]
-- taboos: {<taboo.Taboo object at 0x0000024FA806C160>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C1C0>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C220>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C340>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C2E0>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C3A0>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C400>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C460>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C4C0>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C520>: [False, True, False], <taboo.Taboo object at 0x0000024FA806C580>: [False, True, False]}
-- talk: <bound method NPC.talk of <npc.NPC object at 0x0000024FA806C640>>
+- taboo_list: [<taboo.Taboo object at 0x000001F36B284F70>, <taboo.Taboo object at 0x000001F36B284FD0>, <taboo.Taboo object at 0x000001F36B28D070>, <taboo.Taboo object at 0x000001F36B28D0D0>, <taboo.Taboo object at 0x000001F36B28D130>, <taboo.Taboo object at 0x000001F36B28D190>, <taboo.Taboo object at 0x000001F36B28D1F0>, <taboo.Taboo object at 0x000001F36B28D250>, <taboo.Taboo object at 0x000001F36B28D2B0>, <taboo.Taboo object at 0x000001F36B28D310>, <taboo.Taboo object at 0x000001F36B28D370>, <taboo.Taboo object at 0x000001F36B28D3D0>, <taboo.Taboo object at 0x000001F36B28D430>]
+- taboos: {<taboo.Taboo object at 0x000001F36B284F70>: [False, True, False], <taboo.Taboo object at 0x000001F36B284FD0>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D070>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D0D0>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D130>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D190>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D1F0>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D250>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D2B0>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D310>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D370>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D3D0>: [False, True, False], <taboo.Taboo object at 0x000001F36B28D430>: [False, True, False]}
+- talk: <bound method NPC.talk of <npc.NPC object at 0x000001F36B28D490>>
 - thinks: {}
 - trust: 0
 - virgin: False
-- will: 85
+- will: 47

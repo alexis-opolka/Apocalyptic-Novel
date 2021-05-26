@@ -47,9 +47,11 @@ class Engine:
         self.wifi = {} ### `nom du wifi`, `True` si connecté sinon `False`
 
         self.Qt_app = QApplication(sys.argv)
-        self.window = VisualEngine(self.title)
+        self.window = VisualEngine(self, self.title)
         self.browser = WebBrowser(str(self.title + " browser"))
         self.window.windows.append(self.browser)
+
+        self.StartProcess()
 
         print(f"{self.title} - {self.version} (Alpha) (c) {self.creator}")
         print(f"{self.username} has launched process at: {self.start_time}\n\n")
@@ -84,8 +86,7 @@ class Engine:
             raise Exception("SupportError: Sorry, you launched the game with a system which we don't support.")
 
     def GetUsername(self):
-        if self.linux is True or self.windows is True:
-            return os.getlogin()
+        return os.getlogin()
 
     def GetHostname(self):
         return self.env["HOSTNAME"]
@@ -113,13 +114,24 @@ class Engine:
             return False
 
     #### Methods for actions
-    def StartQtProcess(self):
-        execute = input("Do you want to launch the QT window [Y/N]: ")
-        if execute.lower() == "y":
-            self.window.exec()
-            self.Qt_app.exec_()
+    def StartQtProcess(self, verify=False, maximized=False):
+        if verify is True:
+            execute = input("Do you want to launch the QT window [Y/N]: ")
+            if execute.lower() == "y":
+                if maximized is False:
+                    self.window.exec()
+                else:
+                    self.window.execMaximized()
+                self.Qt_app.exec_()
+            else:
+                return
         else:
-            return
+            if maximized is False:
+                self.window.exec()
+            else:
+                self.window.execMaximized()
+            self.Qt_app.exec_()
+
     def OpenBrowser(self):
         self.browser.show()
 
@@ -208,19 +220,19 @@ class ZaFloat(object):
         return float(self.attr)
 
 class VisualEngine(QMainWindow):
-    def __init__(self, window_title):
-        super(VisualEngine, self).__init__()
+    def __init__(self, root, window_title):
+        super().__init__()
+        self.root = root
         self.windows = []
         self.window_title = window_title
-        self.button = QPushButton("Push for New Window")
+        self.button = QPushButton("Push to change Widgets")
         self.button.clicked.connect(self.show_new_window)
         self.setAttribute(Qt.WA_DeleteOnClose)
         self.setCentralWidget(self.button)
 
     def show_new_window(self, checked):
-        self.test = WebBrowser("title")
-        self.windows.append(self.test)
-        self.windows[self.windows.index(self.test)].show()
+        self.windows.append(self.root.browser)
+        self.setCentralWidget(self.root.browser)
 
     def exec(self):
         self.windows.append(self)
@@ -232,11 +244,11 @@ class VisualEngine(QMainWindow):
 
 class WebBrowser(QWidget):
     def __init__(self, window_title):
-        super(WebBrowser, self).__init__()
-        layout = QVBoxLayout()
+        super().__init__()
+        self.layout = QVBoxLayout()
         self.label = QLabel("Here is the WebBrowser() window")
-        layout.addWidget(self.label)
-        self.setLayout(layout)
+        self.layout.addWidget(self.label)
+        self.setLayout(self.layout)
         self.window_title = window_title
         self.setAttribute(Qt.WA_DeleteOnClose)
         self.tabs = QTabWidget()
@@ -248,7 +260,6 @@ class WebBrowser(QWidget):
         self.tabs.addTab(self.tab1,"New Tab")
         self.tab1UI(self.tab1)
         self.setWindowTitle(window_title)
-        #self.setCentralWidget(self.tabs)
         QShortcut(QKeySequence("Ctrl+T"), self, self.addTab)
 
     def addTab(self):
