@@ -1,1 +1,1 @@
-TabooList = []
+#TODO: erase TabooList to use the one created in main.py

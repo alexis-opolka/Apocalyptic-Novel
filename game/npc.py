@@ -10,7 +10,7 @@ import environment
 
 
 
-class NPC:
+class NPC: #TODO: Change __init__ to have less dependencies
     """
         This class is only used for NPC.
         We alternate the Point of View(POV) for the actions and sometimes have the two pov available for
@@ -25,7 +25,7 @@ class NPC:
     ### Class global list
     #### Names
     male_names_list = ["Georges", "Mathieu", "Michael", "Nicolas", "Yohann"]
-    fem_names_list = ["Millie","Camille", "Jade", "Marine", "Andréa"]
+    fem_names_list = ["Millie","Camille", "Jade", "Marine", "Andréa", "Lily"]
     #### Body
     hair_color_list = ["brown", "black", "blond", "ginger"]
     haircut_list = ["short", "medium", "long"]
@@ -42,27 +42,44 @@ class NPC:
     reply_list = ("What ?", "I have nothing to say to you!", "What again ?!")
     #### Booleans
     bool_list = (True, False)
+    ### predefined global NPC attributes
+    taboo_list = None
+
+    def setTabooList(list):
+        NPC.taboo_list = list
 
 
-    def __init__(self, name="???", color="#f9300c", genre="fem", minage=17, maxage=36, isenslaved=False, profile_image="images/pnj.png", font="Avara.tff", dialogue_color="#ffffff"):
+    def __init__(
+        self,
+        name="?",
+        colour="#f9300c",
+        sex="fem",
+        min_age=17,
+        max_age=36,
+        is_enslaved=False,
+        profile_image="images/pnj.png",
+        font="Avara.tff",
+        dialogue_colour="#ffffff"):
 
+        self.taboo_list = NPC.taboo_list
         ### Strings Creator-defined
-        self.c = renpy.Character(name, #The name to be displayed above the dialogue.
-            what_font = font, #The font to be used for the character.
+        self.c = renpy.Character(name, # The name to be displayed above the dialogue.
+            what_font = font, # The font to be used for the character.
             who_font = font,
-            color = color, #The colour of the character's NAME section
-            what_color = dialogue_color) #The colour of the character's dialogue.
-        self.age = random.randint(minage, maxage) # Aged Randomly defined between min and max age given when __init__() called
+            color = colour, # The colour of the character's NAME section
+            what_color = dialogue_colour) # The colour of the character's dialogue.
+        self.age = random.randint(min_age, max_age) # Aged Randomly defined between min and max age given when __init__() called
         self.name = name # Used to have the name of Object and NPC
-        self.color = color # Theoric use: Add it in the Character() function for having the NPC have this color
-        self.genre = genre # Used to know the genre of NPC and conjugate phrases to male or female prefix
+        self.color = colour # Theoric use: Add it in the Character() function for having the NPC have this color
+        self.sex = sex # Used to know the genre of NPC and conjugate phrases to male or female prefix
         self.profile_image = profile_image # used to show the image when NPC talks
-        if self.genre == "fem":
-            self.genren = "Woman" # Name used to properly define NPC's genre, here it's a female
-        elif self.genre == "man":
-            self.genren = "Man" # Name used to properly define NPC's genre, here it's a male
+        ## TODO: self.genre --> self.sex, make appropriate modifications
+        if self.sex == "fem":
+            self.sex_name = "Woman" # Name used to properly define NPC's genre, here it's a female
+        elif self.sex == "man":
+            self.sex_name = "Man" # Name used to properly define NPC's genre, here it's a male
         else:
-            self.genren = "Undefined" # Name used to properly define NPC's genre, here it's not given or NPC is non binary
+            self.sex_name = "Undefined" # Name used to properly define NPC's genre, here it's not given or NPC is non binary
         self.status = NPC.status_list[0]
 
         ### Strings Randomly defined
@@ -89,17 +106,17 @@ class NPC:
         self.happiness = 100 # Happiness of npc | Used to determine if is in depression or not
 
         ### Booleans
-        if isenslaved == True:
+        if is_enslaved == True:
             self.enslaved = True # npc is a slave | Only used to know enslavement
             self.free = False # npc is not free | Used to know certain amount of things: slavery, faction, prisoner, etc...
-        elif isenslaved == False:
+        elif is_enslaved == False:
             self.enslaved = False # npc isn't a slave | Only used to know enslavement
             self.free = True # npc is free | Used to know certain amount of things: slavery, faction, prisoner, etc...
         self.dead = False # npc is dead
         self.suicided = False # npc suicided
         self.killed = False # npc has been killed
         self.kidnapped = False # npc has been kidnapped
-        self.had_sex_with = False # if False npc is a virgin otherwise he's not and the value is True
+        self.virgin = False # if False npc is a virgin otherwise he's not and the value is True
 
         ### None defined properties
         self.owner = None # Used to store object reference of Owner | Only used when npc is enslaved, self.enslaved == True
@@ -109,7 +126,8 @@ class NPC:
         ### Lists
         self.knows = [] # npc/Player is added when npc hears of him/her
         self.encounters = [] # npc/Player is added when npc speaks to them for the first time
-        self.had_relationship = [] # Every relationships of npc
+        # Every relationships of npc
+        self.relationships = []
         self.can_interact = [] # List of npc/Player with whom the npc can interact, it's cleared when we quit the room | Used to dynamically interact with the npcs of the Room
         self.slaves = [] # Every slaves of npc
         self.joined = []
@@ -195,15 +213,15 @@ class NPC:
         self.suicided = True
 
     def HaveSex(self, *names):
-        self.had_sex_with = True
-        self.had_relationship.append(names)
+        self.virgin = True
+        self.relationships.append(names)
 
     #############################################################
     #### We print Information Or It's actions including speaking
     #############################################################
     def SayStats(self):
         if not self.enslaved:
-            print("\nI'm a "+self.genren+".")
+            print("\nI'm a "+self.sex_name+".")
             print("My life is at "+str(self.life)+" hp, I have "+str(self.suspicion)+" suspicion points.")
             print("I have "+str(self.love)+" love points, I'm pissed off at "+str(self.angry)+" points")
             print("I'm feared at "+str(self.fear)+" points. I'm corrupted at "+str(self.corr)+" points")
@@ -225,17 +243,17 @@ class NPC:
             if self.kidnapped == False: print("No one kidnapped me!")
             else: print("Someone kidnapped me!")
 
-            if self.had_sex_with == False: print("I haven't had a relation with someone!")
+            if self.virgin == False: print("I haven't had a relation with someone!")
             else: print("I had a relation with someone wouhou!")
         else:
             print("...")
 
     def SayMyRelations(self):
         if not self.enslaved:
-            if self.had_relationship is None:
+            if self.relationships is None:
                 print("I haven't had a relation with someone...")
             else:
-                print(self.name,"I had relations with"+str(self.had_relationship))
+                print(self.name,"I had relations with"+str(self.relationships))
         else:
             print("...")
 
@@ -273,9 +291,9 @@ class NPC:
     ### Randomization of Vars
     #################################################
     def RandomName(self):
-        if self.genre == "fem":
+        if self.sex == "fem":
             self.name = random.choice(NPC.fem_names_list)
-        elif self.genre == "man":
+        elif self.sex == "man":
             self.name = random.choice(NPC.male_names_list)
         else:
             print("Genre is not properly defined")

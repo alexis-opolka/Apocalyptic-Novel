@@ -1,5 +1,5 @@
 from datetime import datetime as dte
-from taboo import *
+from taboo import Taboo
 from npc import NPC
 from player import Player
 import factions as fct
@@ -41,6 +41,45 @@ city = env.Environment(root)
 bathroom = env.Room(house, "Bathroom")
 chamber = env.Room(house, "Chamber")
 kitchen = env.Room(house, "Kitchen")
+
+### Taboo system
+#### We initialize the taboos & executed the minimal settings
+taboo_nude = Taboo("Nudity")
+taboo_wear = Taboo("Wearing")
+taboo_nude.SetContrary(taboo_wear)
+
+taboo_sex = Taboo("Sex")
+taboo_nosex = Taboo("No Sex")
+taboo_sex.SetContrary(taboo_nosex)
+
+taboo_bj = Taboo("Blowjob")
+taboo_nobj = Taboo("No Blowjob")
+taboo_bj.SetContrary(taboo_nobj)
+
+taboo_kill = Taboo("Killing")
+taboo_save = Taboo("Saving")
+taboo_kill.SetContrary(taboo_save)
+
+taboo_egality = Taboo("Equality")
+taboo_slavery = Taboo("Slavery")
+taboo_egality.SetContrary(taboo_slavery)
+
+taboo_capitalism = Taboo("Capitalism")
+taboo_socialism = Taboo("Socialism")
+taboo_capitalism.SetContrary(taboo_socialism)
+
+taboo_test = Taboo("test")
+
+taboo_list = [
+    taboo_nude, taboo_wear,
+    taboo_sex, taboo_nobj,
+    taboo_bj, taboo_nobj,
+    taboo_kill, taboo_save,
+    taboo_egality, taboo_slavery,
+    taboo_capitalism, taboo_socialism
+    ]
+
+NPC.setTabooList(taboo_list)
 
 ### NPCs
 master = NPC()
@@ -112,12 +151,8 @@ print(engine_dict, engine_list, engine_str)
 #print(items_list)
 #print(globals())
 open("_debug-info.txt", "w").write(za.DictToStr(za.StoreObjectAttributesDict(master)))
-
+print(NPC.taboo_list)
 za.EndProcess()
-
-
-
-
 
 print(f"{za.title} - {za.version} finished at: {dte.now()}\n\n")
 
