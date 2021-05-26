@@ -46,9 +46,10 @@ class Engine:
             self.username = self.GetUsername()
         self.wifi = {} ### `nom du wifi`, `True` si connecté sinon `False`
 
-        self.Qt_app = None#QApplication(sys.argv)
-        #self.browser = WebBrowser(str(self.title + " browser"))
+        self.Qt_app = QApplication(sys.argv)
         self.window = VisualEngine(self.title)
+        self.browser = WebBrowser(str(self.title + " browser"))
+        self.window.windows.append(self.browser)
 
         print(f"{self.title} - {self.version} (Alpha) (c) {self.creator}")
         print(f"{self.username} has launched process at: {self.start_time}\n\n")
@@ -215,38 +216,40 @@ class VisualEngine(QMainWindow):
         self.button.clicked.connect(self.show_new_window)
         self.setAttribute(Qt.WA_DeleteOnClose)
         self.setCentralWidget(self.button)
-        self.showMaximized()
 
     def show_new_window(self, checked):
-        if len(self.windows) < 2:
-            self.windows.append(WebBrowser("title"))
-        self.windows[self.windows.index(WebBrowser("title"))].show()
+        self.test = WebBrowser("title")
+        self.windows.append(self.test)
+        self.windows[self.windows.index(self.test)].show()
 
     def exec(self):
         self.windows.append(self)
         self.show()
 
+    def execMaximized(self):
+        self.windows.append(self)
+        self.showMaximized()
+
 class WebBrowser(QWidget):
     def __init__(self, window_title):
+        super(WebBrowser, self).__init__()
         layout = QVBoxLayout()
         self.label = QLabel("Here is the WebBrowser() window")
         layout.addWidget(self.label)
         self.setLayout(layout)
-        super().__init__(self, WebBrowser)
-        #self.window_title = window_title
-        #self.setAttribute(Qt.WA_DeleteOnClose)
-        #self.tabs = QTabWidget()
-        #self.tabs.setTabsClosable(True)
-        #self.tabs.tabCloseRequested.connect(self.closeTab)
-        #self.tab1 = QWidget()
-        #self.tabWebView = []
-        #self.lNameLine = []
-        #self.tabs.addTab(self.tab1,"New Tab")
-        #self.tab1UI(self.tab1)
+        self.window_title = window_title
+        self.setAttribute(Qt.WA_DeleteOnClose)
+        self.tabs = QTabWidget()
+        self.tabs.setTabsClosable(True)
+        self.tabs.tabCloseRequested.connect(self.closeTab)
+        self.tab1 = QWidget()
+        self.tabWebView = []
+        self.lNameLine = []
+        self.tabs.addTab(self.tab1,"New Tab")
+        self.tab1UI(self.tab1)
         self.setWindowTitle(window_title)
         #self.setCentralWidget(self.tabs)
-        #self.showMaximized()
-        #QShortcut(QKeySequence("Ctrl+T"), self, self.addTab)
+        QShortcut(QKeySequence("Ctrl+T"), self, self.addTab)
 
     def addTab(self):
       tab = QWidget()
@@ -255,7 +258,7 @@ class WebBrowser(QWidget):
 
       index = self.tabs.currentIndex()
       self.tabs.setCurrentIndex( index + 1 )
-      #self.tabWebView[self.tabs.currentIndex()].load( QUrl('about:blank'))
+      self.tabWebView[self.tabs.currentIndex()].load( QUrl('about:blank'))
 
     def goBack(self):
       index = self.tabs.currentIndex()
@@ -279,7 +282,10 @@ class WebBrowser(QWidget):
        return
 
     def tab1UI(self,tabName):
-        webView = QWebView()
+        if platform.system() == "linux":
+            webView = QtWebView()
+        else:
+            webView = QWebEngineView()
 
         backButton = QPushButton("")
         backIcon = QIcon()
@@ -327,7 +333,10 @@ class WebBrowser(QWidget):
 
         tabGrid.addWidget(navigationFrame)
 
-        webView = QWebView()
+        if platform.system() == "linux":
+            webView = QWebView()
+        else:
+            webView = QWebEngineView()
         htmlhead = "<head><style>body{ background-color: #1a1a1a; }</style></head><body></body>";
         webView.setHtml(htmlhead)
 
