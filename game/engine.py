@@ -346,10 +346,10 @@ class WebBrowser(QWidget):
         frame = QFrame()
         frame.setFrameStyle(QFrame.Panel)
 
-        gridLayout = QGridLayout(frame);
+        gridLayout = QGridLayout(frame)
         #gridLayout.setObjectName(QStringLiteral("gridLayout"));
-        gridLayout.setContentsMargins(0, 0, 0, 0);
-        gridLayout.addWidget(webView, 0, 0, 1, 1);
+        gridLayout.setContentsMargins(0, 0, 0, 0)
+        gridLayout.addWidget(webView, 0, 0, 1, 1)
         frame.setLayout(gridLayout)
 
         self.tabWebView.append(webView)
