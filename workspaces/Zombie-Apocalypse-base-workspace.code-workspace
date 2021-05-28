@@ -6,5 +6,6 @@
 	],
 	"settings": {
 		"workbench.colorTheme": "Material Theme Darker High Contrast",
+		"python.pythonPath": "/bin/python",
 	}
 }

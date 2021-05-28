@@ -2,10 +2,15 @@
 	"folders": [
 		{
 			"path": "../game"
+		},
+		{
+			"path": "."
 		}
 	],
 	"settings": {
 		"workbench.colorTheme": "Material Theme Darker High Contrast",
 		"editor.fontSize": 19,
+		"python.pythonPath": "/bin/python",
+		"diffEditor.codeLens": true
 	}
 }

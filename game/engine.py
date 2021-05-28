@@ -2,14 +2,50 @@
 # -*- coding: utf-8 -*-
 
 from libs.typeshed import *
-from PyQt5.QtGui import *
-try:
-    from PyQt5.QtWebKitWidgets import * ### Support for Linux
-except:
-    from PyQt5.QtWebEngineWidgets import * ### Support for Windows
-from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
+import PyQt5
 
+#///////////////////////////////////////////////
+#   Keep this part for further check
+#   but nearly sure won't be needed for long
+#///////////////////////////////////////////////
+
+
+#try:
+#    import PyQt5.QtWebKitWidgets as PyQtWebWidgets ### Support for Linux
+#    from PyQtWebWidgets import QWebView
+#except:
+#    from PyQt5.QtWebEngineWidgets import *
+
+
+#///////////////////////////////////////////////
+
+from PyQt5.QtGui import (
+    QIcon,
+    QPixmap,
+    QKeySequence,
+)
+from PyQt5.QtWebEngineWidgets import (
+    QWebEngineView,
+)
+from PyQt5.QtWidgets import (
+    QApplication,
+    QMainWindow,
+    QWidget,
+    QPushButton,
+    QVBoxLayout,
+    QLabel,
+    QTabWidget,
+    QLineEdit,
+    QGridLayout,
+    QFrame,
+    QShortcut,
+    QTableWidget,
+    QTableWidgetItem,
+)
+from PyQt5.QtCore import (
+    Qt,
+    QUrl,
+)
 
 import os
 import sys
@@ -48,7 +84,7 @@ class Engine:
 
         self.Qt_app = QApplication(sys.argv)
         self.window = VisualEngine(self, self.title)
-        self.browser = WebBrowser(str(self.title + " browser"))
+        self.browser = WebBrowser(self, str(self.title + " browser"))
         self.window.windows.append(self.browser)
 
         self.StartProcess()
@@ -230,26 +266,40 @@ class VisualEngine(QMainWindow):
         self.setAttribute(Qt.WA_DeleteOnClose)
         self.setCentralWidget(self.button)
 
+        QShortcut(QKeySequence("Ctrl+Q"), self, self.quit)
+
     def show_new_window(self, checked):
+        #self.hide()
         self.windows.append(self.root.browser)
+        self.setWindowTitle(self.root.browser.window_title)
         self.setCentralWidget(self.root.browser)
+        #self.root.browser.execMaximized()
 
     def exec(self):
+        self.root.Qt_app.setApplicationName(self.window_title)
+        self.setWindowTitle(self.window_title)
         self.windows.append(self)
         self.show()
 
     def execMaximized(self):
+        self.root.Qt_app.setApplicationName(self.window_title)
+        self.setWindowTitle(self.window_title)
         self.windows.append(self)
         self.showMaximized()
 
-class WebBrowser(QWidget):
-    def __init__(self, window_title):
+    def quit(self):
+        self.close()
+
+class WebBrowser(QMainWindow):
+    def __init__(self, root, window_title):
         super().__init__()
-        self.layout = QVBoxLayout()
-        self.label = QLabel("Here is the WebBrowser() window")
-        self.layout.addWidget(self.label)
-        self.setLayout(self.layout)
+        self.root = root
         self.window_title = window_title
+
+        layout = QVBoxLayout()
+        self.setLayout(layout)
+        self.label = QLabel("Here is the WebBrowser() window")
+        layout.addWidget(self.label)
         self.setAttribute(Qt.WA_DeleteOnClose)
         self.tabs = QTabWidget()
         self.tabs.setTabsClosable(True)
@@ -259,8 +309,20 @@ class WebBrowser(QWidget):
         self.lNameLine = []
         self.tabs.addTab(self.tab1,"New Tab")
         self.tab1UI(self.tab1)
-        self.setWindowTitle(window_title)
+        self.setCentralWidget(self.tabs)
+
         QShortcut(QKeySequence("Ctrl+T"), self, self.addTab)
+        QShortcut(QKeySequence("Ctrl+W"), self, self.closeTab)
+
+    def exec(self):
+        self.root.Qt_app.setApplicationName(self.window_title)
+        self.setWindowTitle(self.window_title)
+        self.show()
+
+    def execMaximized(self):
+        self.root.Qt_app.setApplicationName(self.window_title)
+        self.setWindowTitle(self.window_title)
+        self.showMaximized()
 
     def addTab(self):
       tab = QWidget()
@@ -269,7 +331,7 @@ class WebBrowser(QWidget):
 
       index = self.tabs.currentIndex()
       self.tabs.setCurrentIndex( index + 1 )
-      self.tabWebView[self.tabs.currentIndex()].load( QUrl('about:blank'))
+      self.tabWebView[self.tabs.currentIndex()].load( QUrl('https://duckduckgo.com'))
 
     def goBack(self):
       index = self.tabs.currentIndex()
@@ -293,27 +355,24 @@ class WebBrowser(QWidget):
        return
 
     def tab1UI(self,tabName):
-        if platform.system() == "linux":
-            webView = QtWebView()
-        else:
-            webView = QWebEngineView()
+        webView = QWebEngineView()
 
-        backButton = QPushButton("")
-        backIcon = QIcon()
-        backIcon.addPixmap(QPixmap("back.svg"))
-        backButton.setIcon(backIcon)
+        backButton = QPushButton("<-")
+        #backIcon = QIcon()
+        #backIcon.addPixmap(QPixmap("back.svg"))
+        #backButton.setIcon(backIcon)
         backButton.setFlat(True)
 
-        nextButton = QPushButton("")
-        nextIcon = QIcon()
-        nextIcon.addPixmap(QPixmap("next.svg"))
-        nextButton.setIcon(nextIcon)
+        nextButton = QPushButton("->")
+        #nextIcon = QIcon()
+        #nextIcon.addPixmap(QPixmap("next.svg"))
+        #nextButton.setIcon(nextIcon)
         nextButton.setFlat(True)
 
-        refreshButton = QPushButton("")
-        refreshIcon = QIcon()
-        refreshIcon.addPixmap(QPixmap("refresh.svg"))
-        refreshButton.setIcon(refreshIcon)
+        refreshButton = QPushButton("O")
+        #refreshIcon = QIcon()
+        #refreshIcon.addPixmap(QPixmap("refresh.svg"))
+        #refreshButton.setIcon(refreshIcon)
         refreshButton.setFlat(True)
 
         backButton.clicked.connect(self.goBack)
@@ -344,12 +403,9 @@ class WebBrowser(QWidget):
 
         tabGrid.addWidget(navigationFrame)
 
-        if platform.system() == "linux":
-            webView = QWebView()
-        else:
-            webView = QWebEngineView()
-        htmlhead = "<head><style>body{ background-color: #1a1a1a; }</style></head><body></body>";
-        webView.setHtml(htmlhead)
+        html_head = ""
+        webView.setHtml(html_head)
+        webView.setStyleSheet("background-color:#1a1a1a;")
 
         #webView.loadProgress.connect(self.loading)
         webView.loadFinished.connect(self.changePage)
@@ -398,11 +454,16 @@ class WebBrowser(QWidget):
        else:
            print("No tabs open, open one first.")
 
-    def closeTab(self,tabId):
-       print(tabId)
-       del self.lNameLine[tabId]
-       del self.tabWebView[tabId]
-       self.tabs.removeTab(tabId)
+    def closeTab(self, tabId=None):
+        if tabId == None:
+            tabId = self.tabs.currentIndex()
+        #if self.tabs.currentIndex() == (0):
+        #    self.root.window.windows.pop(self.root.window.windows.index(self.root.browser))
+        #    self.setWindowTitle(self.root.window.window_title)
+        #    self.setCentralWidget(self.root.window)
+        del self.lNameLine[tabId]
+        del self.tabWebView[tabId]
+        self.tabs.removeTab(tabId)
 
     def load_page(self, widget):
         so_add = self.wow_address_bar.get_text()
