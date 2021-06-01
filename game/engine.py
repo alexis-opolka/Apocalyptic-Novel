@@ -211,7 +211,7 @@ class Engine:
         return r
 
 ###  Engine-defined Classes
-class ZaList(object):
+class AnList(object):
     def __init__(self, liste):
         self.attr = list(liste)
 
@@ -224,7 +224,7 @@ class ZaList(object):
     def __repr__(self) -> str:
         return str(self.attr)
 
-class ZaDict(object):
+class AnDict(object):
     def __init__(self, key, value):
         self.attr = dict(key=value)
 
@@ -234,21 +234,21 @@ class ZaDict(object):
     def __repr__(self) -> str:
         return str(self.attr)
 
-class ZaStr(object):
+class AnStr(object):
     def __init__(self, string):
         self.attr = str(string)
 
     def __repr__(self) -> str:
         return str(self.attr)
 
-class ZaInt(object):
+class AnInt(object):
     def __init__(self, integer):
         self.attr = int(integer)
 
     def __repr__(self) -> int:
         return int(self.attr)
 
-class ZaFloat(object):
+class AnFloat(object):
     def __init__(self, nbr):
         self.attr = float(nbr)
 

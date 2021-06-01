@@ -221,7 +221,7 @@ class Pnj:
         renpy.show(self.profile_image)
 
     #################################################
-    ### Randomization of Vars
+    ### RandomiAntion of Vars
     #################################################
     def RandomName(self):
         if self.genre == "fem":

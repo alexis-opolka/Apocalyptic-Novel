@@ -287,7 +287,7 @@ class NPC: #TODO: Change __init__ to have less dependencies
         renpy.show(self.profile_image)
 
     #################################################
-    ### Randomization of Vars
+    ### RandomiAntion of Vars
     #################################################
     def RandomName(self):
         if self.sex == "fem":

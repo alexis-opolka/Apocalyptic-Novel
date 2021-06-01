@@ -1,6 +1,6 @@
-# Zombie-Apocalypse
+# Apocalyptic-Novel
 
-## Official code of Zombie Apocalypse
+## Official code of Apocalyptic Novel
 
     This repository contains a python version of what is developed by Centaurus.
     It contains a version without the Ren'Py dependencies.
@@ -74,4 +74,4 @@
 
 ### For any questions please contact us at unknowngamesoff@gmail.com
 
-#### Copyright (c) Unknown Games 2019-2020
+#### Copyright (c) Unknown Games 2019-2021

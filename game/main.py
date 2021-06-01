@@ -16,19 +16,19 @@ import engine
 ################################################################################
 ###
 ###
-### Objects initialzation
+### Objects initialAntion
 ###
 ###
 ################################################################################
-### Base of working of ZA
-za_engine = engine.Engine("Zombie Apocalypse", "0.2", "Unknown Games")
+### Base of working of An
+an_engine = engine.Engine("Apocalyptic Novel", "0.2", "Unknown Games")
 
 
 ### Simplifying the writing of Program-Classes
-ZaList, ZaDict, ZaStr = engine.ZaList, engine.ZaDict, engine.ZaStr
-engine_list = ZaList(["test_list_element", "test_list_element_2"])
-engine_dict = ZaDict("test_key", "test_value")
-engine_str = ZaStr("test_string")
+AnList, AnDict, AnStr = engine.AnList, engine.AnDict, engine.AnStr
+engine_list = AnList(["test_list_element", "test_list_element_2"])
+engine_dict = AnDict("test_key", "test_value")
+engine_str = AnStr("test_string")
 
 
 ### World, Environments and Rooms
@@ -140,15 +140,15 @@ pnj.RandomName(); pnj.RandomTaboo()
 ###
 ###
 ################################################################################
-za_engine.StartQtProcess(maximized=True)
+an_engine.StartQtProcess(maximized=True)
 #print(engine_dict, engine_list, engine_str)
 #print(items_list)
 #print(globals())
-open("_debug-info.txt", "w").write(za_engine.DictToStr(za_engine.StoreObjectAttributesDict(master)))
+open("_debug-info.txt", "w").write(an_engine.DictToStr(an_engine.StoreObjectAttributesDict(master)))
 #print(NPC.taboo_list)
-za_engine.EndProcess()
+an_engine.EndProcess()
 
-print(f"{za_engine.title} - {za_engine.version} finished at: {dte.now()}\n\n")
+print(f"{an_engine.title} - {an_engine.version} finished at: {dte.now()}\n\n")
 
 #en gros pour chaque acteur j'ai une variable qui représente
 # sa demande (de 0 à 1000 mais ça pourrait aller de +inf à -inf)

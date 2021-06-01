@@ -1,5 +1,3 @@
-chmod +x  Zombie-Apocalypse.sh
-
 #!/bin/bash
 # Print Hello world message
 python3 auto-import.py --handle-imports
