@@ -1,7 +1,5 @@
 # Apocalyptic Novel Roadmap
 
-## Copyright (c) 2018-2021 Unknown Games, All Rights Reserved
-
 ## Current version: `alpha 0.2.4.6`
 
 ## 0.2.4
@@ -35,3 +33,5 @@
 
     - Create an action system between Player() and Npc().
     - Render, using code, a frame for inventory.
+
+## Copyright &copy; 2019-2023 Alexis Opolka - All Rights Reserved
